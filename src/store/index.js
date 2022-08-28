@@ -68,11 +68,12 @@ export default createStore({
     Register: async (context,payload)=>{
       const res = await fetch("https://jessesfoodblog.herokuapp.com/users/register",{
         method:"POST",
-        body:JSON.stringify({
-          Username:payload.Username,
+        body: JSON.stringify({
+          name: payload.name,
+          suname:payload.surname,
+          username:payload.username,
           email:payload.email,
           password:payload.password,
-          user_type:payload.user_type
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -164,17 +165,17 @@ export default createStore({
         const res = await fetch("https://jessesfoodblog.herokuapp.com/comments",{
           method:"POST",
           body:JSON.stringify({
-           user_id:payload.user_id,
-           topic_id:payload.topic_id,
+           userID:payload.userID,
+           blogpostID:payload.blogpostID,
            comment:payload.comment,
-           date:payload.date
+           comUsername:payload.comUsername
           }),
           headers: {
             'Content-type': 'application/json; charset=UTF-8',
           },
         }) 
-        const comment_added = res.json();
-        console.log(comment_added);
+        const commentAdded = res.json();
+        console.log(commentAdded);
     },
       
       DeleteComment:async (id)=>{

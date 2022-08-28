@@ -1,18 +1,9 @@
 <template>
     <div v-if="post">
-        <div v-for="item in post" :key="item.postID" class="topic" >
+        <div v-for="item in post" :key="item.postID" class="post" >
           <h1>{{item.title}}</h1>
           <div class="box">
-              <div class="for">
-                  <label for="for" >For topic</label>
-                  <input type="checkbox" name="for" id="for" v-model="right">
-                  {{right}}
-                  </div>
-         <div class="for">
-                  <label for="for" >Against topic</label>
-                  <input type="checkbox" name="for" id="for" v-model="left">
-                  {{left}}
-                  </div>
+
             </div>
           </div>
         <div class="comments">
@@ -40,8 +31,6 @@ export default {
 
     data(){
        return{
-        right:false,
-        left:false,
         comment:""
         
        }
@@ -59,7 +48,7 @@ export default {
          comments(){
             return this.$store.state.comments;
         },
-        Debater(){
+        Commenter(){
               return this.$store.state.user;
         }
     },
@@ -69,9 +58,10 @@ export default {
         },
         Send(){
             this.$store.dispatch("AddComment",{
+                userID: this.Commenter.userID,
+                postID:this.$route.params.id,
                 comment:this.comment,
-                userID:this.Debater.user_id,
-                postID:this.$route.params.id
+                comUsername:this.Commenter.username
             })
         }
     }
@@ -82,12 +72,6 @@ export default {
     label{
         margin-right: 10px;
     }
-
-    .for{
-        border:1px solid black;
-        padding: 10px;
-        width: fit-content;
-    } 
     .box{
         margin: auto; 
         display: flex;

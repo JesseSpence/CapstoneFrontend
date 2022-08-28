@@ -1,6 +1,6 @@
 <template >
     <div v-if="user">
-        <h1>{{user.Username}}</h1>
+        <h1>{{user.username}}</h1>
     </div>
     <button @click="UserChecker">Look</button>
 </template>
