@@ -19,6 +19,7 @@ export default createStore({
      },
     SetUser(state,user){
      state.user = user
+     
     },
     SetToken(state,token){
       state.token = token
@@ -31,9 +32,15 @@ export default createStore({
      },
      SetComments(state,comments){
       state.comments = comments
-     }
+    },
+    Logout(state){
+      state.user = "",
+        state.token = ""
+      
+    },
   },
   actions: {   
+
      ShowUsers:async (context)=>{
     const res = await fetch("https://jessesfoodblog.herokuapp.com/users",{
       method:"GET",
@@ -44,7 +51,8 @@ export default createStore({
     const UsersArray = await res.json();
     console.log(UsersArray);
     context.commit("SetUsers",UsersArray);
-  },
+    },
+    
     Login: async (context,payload)=>{
       const res = await fetch("https://jessesfoodblog.herokuapp.com/users/login",{
         method:"POST",
@@ -60,11 +68,31 @@ export default createStore({
       .then(tokendata=>{
         console.log(tokendata);
         console.log(tokendata.token);
-  
-       context.commit("SetToken",tokendata.token)
+  //if (data.token){}
+        context.commit("SetToken", tokendata.token)
       })
 
     },
+
+    Verify:async (context,token)=>{
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/users/users/verify", {
+        method:"GET",
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+          'x-auth-token':`${token}`
+        },
+      })
+      .then(res => res.json())
+      .then(userDetails =>{
+        console.log(userDetails.user);
+       context.commit("SetUser",userDetails.user)
+      } )
+   
+      // router.push({
+      //   name:"posts"
+      // })
+    },
+
     Register: async (context,payload)=>{
       const res = await fetch("https://jessesfoodblog.herokuapp.com/users/register",{
         method:"POST",
@@ -84,24 +112,7 @@ export default createStore({
         console.log(newUserdata);
       })
     },
-    Verify:async (context,token)=>{
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/users/verify",{
-        method:"GET",
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-          'x-auth-token':`${token}`
-        },
-      })
-      .then(res => res.json())
-      .then(userDetails =>{
-        console.log(userDetails.user);
-       context.commit("SetUser",userDetails.user)
-      } )
-   
-      router.push({
-        name:"Posts"
-      })
-    },
+    
     AddPost:async (context,Land)=>{
         console.log(Land);
       const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts",{
@@ -161,20 +172,16 @@ export default createStore({
         context.commit("SetComments",comments_Array);
     },
     
-      AddComment:async (payload)=>{
-        const res = await fetch("https://jessesfoodblog.herokuapp.com/comments",{
+      AddComment:async (context, payload)=>{
+        const res = await fetch("https://jessesfoodblog.herokuapp.com/comments", {
+          mode:"cors",
           method:"POST",
-          body:JSON.stringify({
-           userID:payload.userID,
-           blogpostID:payload.blogpostID,
-           comment:payload.comment,
-           comUsername:payload.comUsername
-          }),
+          body:JSON.stringify(payload),
           headers: {
             'Content-type': 'application/json; charset=UTF-8',
           },
         }) 
-        const commentAdded = res.json();
+        const commentAdded = await res.json();
         console.log(commentAdded);
     },
       

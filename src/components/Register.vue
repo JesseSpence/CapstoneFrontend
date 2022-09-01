@@ -2,15 +2,15 @@
     <div>
        <form @submit.prevent="Register">
        <div class="inputs" id="important">
-        <input type="name" name="name" id="name" class="from-control" v-model="name" required>
+        <input type="name" name="name" id="name" class="formcontrol" v-model="name" required>
            {{name}}
-           <input type="surname" name="surname" id="surname" class="from-control" v-model="surname" required>
+           <input type="surname" name="surname" id="surname" class="formcontrol" v-model="surname" required>
              {{surname}} 
-           <input type="text" name="Username" id="Username" class="from-control" v-model="Username" required>
+           <input type="text" name="Username" id="Username" class="formcontrol" v-model="Username" required>
            {{Username}}
-           <input type="email" name="email" id="email" class="from-control" v-model="email" required>
+           <input type="email" name="email" id="email" class="formcontrol" v-model="email" required>
            {{email}}
-             <input type="password" name="password" id="password" class="from-control" v-model="password" required>
+             <input type="password" name="password" id="password" class="formcontrol" v-model="password" required>
              {{password}}       
        </div>
       
@@ -46,5 +46,12 @@ export default {
 </script>
 
 <style scoped="">
-    
+    .formcontrol {
+ border-radius:20px;
+ background: rgba(48, 44, 44, 0.381);
+  width: 180px;
+  color: white;
+  margin: 5% auto;
+  padding: 2% 0 2% 5%;
+}
 </style>
