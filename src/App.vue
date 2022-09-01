@@ -21,15 +21,26 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@100&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@100&family=Silkscreen&display=swap');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family:'Montserrat', sans-serif; ;
   -webkit-font-smoothing: antialiased;
+  margin: 0;
+  width: 100vw;
+  padding: 0;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: rgb(25, 23, 23);
+  /* text-align: center;
+  color: rgb(25, 23, 23); */
 }
-/* *{
-  outline: rgba(0, 128, 0, 0.393) 0.5px solid;} */
+body{
+  overflow-x: clip !important;
+}
+*{
+  outline: rgba(0, 128, 0, 0.393) 0.5px solid;}
 nav {
   padding: 30px;
 }
@@ -53,8 +64,7 @@ nav a.router-link-exact-active {
     }
 
     .my-container{
-        margin: 1%;
-        transition: 0.4s;
+        transition: 0.4s;  
     }
     
     .active-nav{
@@ -65,5 +75,18 @@ nav a.router-link-exact-active {
     .active-cont{
         margin-left: 250px;
     }
-   
+   ::-webkit-scrollbar {
+  width: 10px;
+}
+  ::-webkit-scrollbar-track {
+  background: rgb(35, 33, 33); 
+}
+  ::-webkit-scrollbar-thumb {
+  background: rgb(64, 64, 64); 
+    border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  
+  background: #555; 
+} 
 </style>

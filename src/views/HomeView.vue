@@ -1,7 +1,7 @@
 <template>
   <video loop muted autoplay>
     <h1>yo</h1>
-    <source src="../assets/blog-landing.mp4" />
+    <source src="../assets/landing-vids.mp4" />
   </video>
   <div class="landing">
     <div class="landingbox"></div>
@@ -31,7 +31,8 @@ export default {
 
 <style>
 video {
-  width: 100%;
+  min-width: 100vw;
+  max-width: 100vw;
   height: 100vh;
   object-fit: cover;
   position: fixed;
@@ -40,25 +41,22 @@ video {
   z-index: -1;
 }
 .landingbox {
-  height: 350px;
-  width: 800px;
+  height: 100vh;
+  width: 100vw;
   margin: auto;
-  background: rgba(128, 128, 128, 0.507);
-  position: relative;
+  position:fixed;
+  top: 0;
+  left: 0;
+  background: rgba(234, 231, 231, 0.253);
+  filter: blur(2px);
 }
 .homebox {
   z-index: 1;
-  position: absolute;
-  bottom: 40%;
-  right: -28%;
+  height: fit-content;
+  width: fit-content;
+  margin: auto ;
 }
 
-@media screen and (max-width: 500px) {
-  .homebox {
-    margin-top: 20%;
-    margin-left: -25%;
-  }
-}
 .homepic {
   filter: drop-shadow(0px 10px 3px black);
   position: absolute;

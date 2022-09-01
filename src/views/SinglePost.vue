@@ -1,4 +1,5 @@
 <template>
+<div id="body">
   <div v-if="post">
     <div v-for="item in post" :key="item.postID" class="post">
       <div class="reviewsbox">
@@ -13,7 +14,7 @@
         <div v-for="comment in comments" :key="comment.comment_id">
           <div class="fullcom">
             <div class="commentbox">
-              <h5>{{ comment.comment }}</h5>
+              <p>{{ comment.comment }}</p>
             </div>
             <p class="comUsername">{{ comment.comUsername }}</p>
           </div>
@@ -32,6 +33,7 @@
       </div>
       <button @click="Send" class="btn btn-info">Send</button>
     </div>
+  </div>
   </div>
 </template>
 <script>
@@ -57,27 +59,26 @@ export default {
     },
   },
   methods: {
-    changeJ() {
-      JSON.parse(this.topic.topic_answers);
-    },
+    
     Send() {
-    //   console.log(this.$store.state.user);
-        this.$store.dispatch("AddComment", {
-          userID: this.$store.state.user.id,
-          blogpostID: this.$route.params.id,
-          comment: this.comment,
-            comUsername: this.Commenter.username,
-        });
-        setTimeout(() => {
-            this.$router.go()
-        }, 1000);
-        
+      //   console.log(this.$store.state.user);
+      this.$store.dispatch("AddComment", {
+        userID: this.$store.state.user.id,
+        blogpostID: this.$route.params.id,
+        comment: this.comment,
+        comUsername: this.Commenter.username,
+      });
+      setTimeout(() => {
+        this.$router.go();
+      }, 1000);
     },
   },
 };
 </script>
-<style>
-body {
+<style scoped>
+#body {
+  color: black;
+  font-weight: 700;
   background: rgb(24, 9, 1);
   background: linear-gradient(
     0deg,
@@ -85,7 +86,7 @@ body {
     rgb(255, 202, 138) 100%
   );
   background-repeat: no-repeat;
-  height: 100vh;
+  background-position: cover;
 }
 .review {
   border: 1px solid rgba(0, 0, 0, 0.314);
@@ -95,7 +96,9 @@ body {
   min-height: 50vh;
 }
 .comments {
+  margin: auto;
   content: "comments";
+  width: 80vw;
   padding: 5px 0 5px 100px;
 }
 .fullcom {
@@ -105,11 +108,13 @@ body {
 .commentbox {
   height: fit-content;
   width: fit-content;
-  border: 1px rgba(0, 0, 0, 0.319) solid;
+  border: 2px rgba(0, 0, 0, 0.319) solid;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.163);
   position: relative;
+  font-weight: 900;
   padding: 5px 10px 5px 10px;
-  word-break: break-all;
+  word-break:break-all;
 }
 .commentbox::after {
   height: 1px;

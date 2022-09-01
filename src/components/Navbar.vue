@@ -32,9 +32,7 @@
               <router-link class="nav-link" to="/about">About</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/Posts"
-                >Food Reviews</router-link
-              >
+              <router-link class="nav-link" to="/Posts">Reviews</router-link>
             </li>
 
             <li class="nav-item" id="menu-bn" @click="accountToggle()">
@@ -67,7 +65,7 @@ export default {
 </script>
 <style scoped>
 nav {
-  z-index: 1;
+  z-index: 1000;
   background: rgb(35, 33, 33);
 }
 ul {

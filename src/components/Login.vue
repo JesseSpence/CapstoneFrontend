@@ -1,8 +1,8 @@
 <template>
   <div id="login">
+    <h1>Login</h1>
     <form @submit.prevent="Login">
       <div class="inputgroup">
-        
         <input
           type="email"
           aria-label="Email"
@@ -11,7 +11,7 @@
           v-model="email"
           required
         />
-        
+
         <input
           type="password"
           placeholder="password"
@@ -23,13 +23,14 @@
       </div>
       {{ email }}
       {{ password }}
-
-      <button type="submit">Login</button>
-      <div v-if="token">
-        <button @click="Verify">Browse</button>
+      <div class="buttons">
+        <button type="submit">Login</button>
+        <div v-if="token">
+          <button @click="Verify">Browse</button>
+        </div>
+        <div v-else>checking ..</div>
+        <div v-if="user">Hello {{ user.username }}</div>
       </div>
-      <div v-else>checking ..</div>
-      <div v-if="user">Hello {{ user.username }}</div>
     </form>
   </div>
   <button @click="Logout">Logout</button>
@@ -68,21 +69,30 @@ export default {
 </script>
 <style scoped>
 #login {
-    color: rgb(114, 109, 109);
-  margin: 50% 0 0 0;
+  display: flex;
+  flex-direction: column;
+  color: rgb(224, 221, 221);
+  margin: 25% 0 0 0;
+  justify-content: center;
 }
 
-.inputgroup {
+.inputgroup buttons {
   display: flex;
   flex-direction: column;
 }
 
 input.formcontrol {
- border-radius:20px;
- background: rgba(48, 44, 44, 0.381);
+  border-radius: 20px;
+  background: rgba(48, 44, 44, 0.381);
   width: 180px;
-  color: white;
+  color: rgb(167, 32, 32);
   margin: 5% auto;
   padding: 2% 0 2% 5%;
+}
+button {
+  background: rgb(42, 42, 42);
+  color: black;
+  border-radius: 10px;
+  margin: 1% 0 0 0;
 }
 </style>
