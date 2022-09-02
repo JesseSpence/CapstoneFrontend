@@ -52,27 +52,6 @@ export default createStore({
     console.log(UsersArray);
     context.commit("SetUsers",UsersArray);
     },
-    
-    Login: async (context,payload)=>{
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/users/login",{
-        method:"POST",
-        body:JSON.stringify({
-          email:payload.email,
-          password:payload.password
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      })
-      .then(res => res.json())
-      .then(tokendata=>{
-        console.log(tokendata);
-        console.log(tokendata.token);
-  //if (data.token){}
-        context.commit("SetToken", tokendata.token)
-      })
-
-    },
 
     Verify:async (context,token)=>{
       const res = await fetch("https://jessesfoodblog.herokuapp.com/users/users/verify", {
@@ -92,6 +71,30 @@ export default createStore({
       //   name:"posts"
       // })
     },
+    
+    Login: async (context,payload,)=>{
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/users/login", {
+        method: "POST",
+        body: JSON.stringify({
+          email: payload.email,
+          password: payload.password
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then(res => res.json())
+        .then(tokendata => {
+          console.log(tokendata);
+          console.log(tokendata.token); 
+           
+          //if (data.token){}
+          context.commit("SetToken", tokendata.token)
+        });
+      // const ver = app.methods.Verify(context,token)
+      //   return ver
+    },
+
 
     Register: async (context,payload)=>{
       const res = await fetch("https://jessesfoodblog.herokuapp.com/users/register",{

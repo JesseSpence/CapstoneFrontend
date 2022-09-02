@@ -9,8 +9,8 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"
-          ><img width="50" src="https://i.ibb.co/nfvy8n7/pngwing-com.png" />
-          Mellow Reviews</a
+          ><router-link class="nav-link active" to="/"><img width="50" src="https://i.ibb.co/nfvy8n7/pngwing-com.png" />
+          Mellow Reviews</router-link></a
         >
         <button
           class="toggler"
@@ -29,13 +29,24 @@
               <router-link class="nav-link active" to="/">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">About</router-link>
+              <router-link class="nav-link" to="/about">Contact</router-link>
             </li>
+
             <li class="nav-item">
               <router-link class="nav-link" to="/Posts">Reviews</router-link>
             </li>
-
-            <li class="nav-item" id="menu-bn" @click="accountToggle()">
+            <li v-if="user" class="nav-item">
+              <router-link class="nav-link" to="/User"><i class="fa-solid fa-user"></i></router-link>
+            </li>
+            <li
+            class=" nav-item"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation" 
+            v-else  id="menu-bn" @click="accountToggle()">
               <i class="fa-solid fa-user"></i>
             </li>
           </ul>
@@ -51,6 +62,11 @@ export default {
   components: {
     Login,
     Register,
+  },
+  computed: {
+   user() {
+      return this.$store.state.user;
+    }, 
   },
   methods: {
     accountToggle() {
