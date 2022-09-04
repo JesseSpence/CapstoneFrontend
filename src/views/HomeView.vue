@@ -1,10 +1,11 @@
 <template>
   <video loop muted autoplay>
-    <h1>yo</h1>
     <source src="../assets/landing-vids.mp4" />
   </video>
   <div class="landing">
-    <div class="landingbox"></div>
+    <div class="landingbox">
+      <h1>hi and welcome to</h1>
+    </div>
     <div class="homebox container d-flex flex-column">
       <div class="circlecontainer">
         <img
@@ -14,22 +15,26 @@
         />
       </div>
     </div>
+
+    <h1>Mellows Food Reviews</h1>
   </div>
+  <Footer/>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-
+import Footer from "@/components/Footer.vue"
 export default {
   name: "HomeView",
   components: {
     HelloWorld,
+    Footer,
   },
 };
 </script>
 
-<style>
+<style scoped>
 video {
   min-width: 100vw;
   max-width: 100vw;
@@ -40,21 +45,20 @@ video {
   top: 0;
   z-index: -1;
 }
-.landingbox {
-  height: 100vh;
-  width: 100vw;
-  margin: auto;
-  position:fixed;
-  top: 0;
-  left: 0;
-  background: rgba(234, 231, 231, 0.253);
-  filter: blur(2px);
+.landing{
+  margin: -2% auto ;
 }
+.landingbox, h1{
+  z-index: 100;
+  margin: 10% auto;
+  width:fit-content;
+}
+
 .homebox {
   z-index: 1;
   height: fit-content;
   width: fit-content;
-  margin: auto ;
+  margin:-5% auto -5%;
 }
 
 .homepic {

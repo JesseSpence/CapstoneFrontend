@@ -25,16 +25,15 @@
           required
         />
       </div>
-      {{ email }}
       {{ password }}
       <div class="buttons">
-        <button type="submit">Login</button>
+        <button @click="loader" type="submit">Login</button>
         <!-- <div v-if="token">
           <button @click="Verify">Browse</button>
         </div> -->
 
         <div v-if="user">Hello {{ user.username }}</div>
-        <div v-else>checking ..</div>
+        <div v-if="load">checking ..</div>
       </div>
     </form>
   </div>
@@ -54,22 +53,33 @@ export default {
     return {
       email: "",
       password: "",
+      load : false,
     };
   },
   methods: {
     async Login() {
       if (!this.$store.state.token) {
+
+        //set token into state, starting the login process
         await this.$store.dispatch("Login", {
           email: this.email,
           password: this.password,
         });
+
+        //then login and set user into state
         this.$store.dispatch("Verify", this.token);
+
+        //load the user page
         setTimeout(this.$router.push("/User"), 2000);
+
+        //close the login bar, it will be unavailable until user logs out
         let sidebar = document.querySelector("#sidebar");
         let container = document.querySelector(".my-container");
         sidebar.classList.toggle("active-nav");
         container.classList.toggle("active-cont");
-      } else {
+      }
+    //user should not be able to see login once the token is set
+      else {
         console.log("how have you done this");
       }
     },
@@ -82,6 +92,9 @@ export default {
       console.log("goodbye, see you later");
       this.$router.push("/");
     },
+    loader(){
+      this.load = !this.load;
+    }
   },
 };
 </script>
@@ -109,8 +122,10 @@ input.formcontrol {
 }
 button {
   background: rgb(42, 42, 42);
-  color: black;
+  color: var(--off-white);
   border-radius: 10px;
   margin: 1% 0 0 0;
+  font-size: 1rem;
+  padding:5px;
 }
 </style>

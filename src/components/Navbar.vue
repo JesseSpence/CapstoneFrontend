@@ -82,7 +82,7 @@ export default {
 <style scoped>
 nav {
   z-index: 1000;
-  background: rgb(35, 33, 33);
+  background:var(--nav-color);
 }
 ul {
   list-style: none;
@@ -94,7 +94,10 @@ ul {
 li {
   padding: 1%;
   margin: auto;
-  color: white !important;
+  color: var(--off-white) !important;
+}
+li:hover, .navbar-brand:hover{
+  transform: scale(1.02);
 }
 
 nav a.router-link-exact-active {
@@ -102,7 +105,7 @@ nav a.router-link-exact-active {
 }
 
 .navbar-brand {
-  color: white;
+  color: var(--off-white);
 }
 .toggler {
   display: none;

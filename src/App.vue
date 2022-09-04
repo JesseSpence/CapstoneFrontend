@@ -6,8 +6,19 @@
 </template>
 
 <script>
+//   const span = document.getElementById("p");
+
+
+
+// span.addEventListener("copy", function(event) {
+//   event.preventDefault();
+//   if (event.clipboardData) {
+//     event.clipboardData.setData("text/plain", span.textContent);
+//     console.log(event.clipboardData.getData("text"))
+//   }
+// });
 import Navbar from "./components/Navbar.vue";
-import Mycontainer from "./components/mycontainer.vue"
+import Mycontainer from "./components/Footer.vue"
 export default {
   data() {
     return {};
@@ -21,6 +32,12 @@ export default {
 </script>
 
 <style>
+:root{
+  --nav-color:rgb(35, 33, 33);
+  --float: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+--off-white:rgb(224, 221, 221);
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@100&display=swap');
@@ -36,15 +53,36 @@ export default {
   /* text-align: center;
   color: rgb(25, 23, 23); */
 }
+#body {
+ position:fixed;
+ top: 0;
+ width: 100vw;
+}
+h1{
+  margin: 6% 0 3% 5%;
+  padding: 0.5px 4px;
+  /* font-weight:600; */
+}
 body{
+  background-color:black;
   overflow-x: clip !important;
 }
 *{
-  outline: rgba(0, 128, 0, 0.393) 0.5px solid;}
+  outline: rgba(0, 128, 0, 0.393) 0.5px solid;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;}
 nav {
   padding: 30px;
 }
-
+h1{
+  background: rgba(0, 0, 0, 0.486);
+  border-radius: 10px;
+  box-shadow: var(--float);
+  border: 2px solid black;
+  color: var(--off-white);
+  width: fit-content;
+}
 nav a {
   font-weight: bold;
   color: #2c3e50;
@@ -59,8 +97,8 @@ nav a.router-link-exact-active {
         position:fixed;
         margin-left: -300px;
         top:0;
-        background-color: var(--nav-color);
         transition: 0.5s;
+  background: rgba(0, 0, 0, 0.714);
     }
 
     .my-container{
@@ -86,7 +124,6 @@ nav a.router-link-exact-active {
     border-radius:10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  
   background: #555; 
 } 
 </style>

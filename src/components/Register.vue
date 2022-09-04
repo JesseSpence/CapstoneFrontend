@@ -29,7 +29,7 @@
           id="Username"
           placeholder="username"
           class="formcontrol"
-          v-model="Username"
+          v-model="username"
           required
         />
         {{ Username }}
@@ -65,7 +65,7 @@ export default {
     return {
       name: "",
       surname: "",
-      Username: "",
+      username: "",
       email: "",
       password: "",
     };
@@ -75,10 +75,9 @@ export default {
       this.$store.dispatch("Register", {
         name: this.name,
         surname: this.surname,
-        Username: this.Username,
         email: this.email,
         password: this.password,
-        user_type: this.Yoh,
+        username: this.username,
       });
     },
   },

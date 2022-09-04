@@ -5,7 +5,8 @@
       <div class="reviewsbox">
         <h1>{{ item.title }}</h1>
         <div class="review">
-          <p>{{ item.review }}</p>
+          <p id="review">{{ item.review }}</p>
+          <img id="foodpic" width="200" :src="item.foodimage" alt="">
         </div>
       </div>
     </div>
@@ -13,6 +14,10 @@
       <div v-if="comments">
         <div v-for="comment in comments" :key="comment.comment_id">
           <div class="fullcom">
+            <div class="buttons">
+            <button name="" id="del">✗</button>
+            <button id="edit">✎</button>
+          </div>
             <div class="commentbox">
               <p>{{ comment.comment }}</p>
             </div>
@@ -79,24 +84,46 @@ export default {
 #body {
   color: black;
   font-weight: 700;
-  background: rgb(24, 9, 1);
+  background: rgb(40, 2, 2);
   background: linear-gradient(
     0deg,
-    rgb(170, 66, 10) 0%,
-    rgb(255, 202, 138) 100%
+    rgb(153, 0, 0) 0%,
+    rgb(245, 85, 85) 100%
   );
+  position: absolute;
+  top:0;
+  width:100vw;
   background-repeat: no-repeat;
   background-position: cover;
 }
+h1{
+  margin: 5% 0 2% 5%;
+  /* font-weight:600; */
+}
+#review{
+  background: var(--off-white);
+}
+#foodpic{
+  position: absolute;
+  right:5%;
+  top:30%;
+}
 .review {
-  border: 1px solid rgba(0, 0, 0, 0.314);
   margin: auto;
-  padding: 4%;
   width: 80vw;
+  background:  var(--off-white);
+  border: 3px solid black;
+  border-radius: 10px;
+  color:black;
+  box-shadow: var(--float);
+  padding: 2% 2% 1% 1%;
+ font-weight: 900;
+  line-height: 2rem;
+  word-spacing:3px;
   min-height: 50vh;
 }
 .comments {
-  margin: auto;
+  margin: 7% auto;
   content: "comments";
   width: 80vw;
   padding: 5px 0 5px 100px;
@@ -108,12 +135,14 @@ export default {
 .commentbox {
   height: fit-content;
   width: fit-content;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
   border: 2px rgba(0, 0, 0, 0.319) solid;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.163);
+  background: rgba(0, 0, 0, 0.486);
   position: relative;
-  font-weight: 900;
-  padding: 5px 10px 5px 10px;
+  font-weight: 100;
+  color: var(--off-white);
+  padding: 10px 10px 0px 10px;
   word-break:break-all;
 }
 .commentbox::after {
@@ -131,8 +160,29 @@ export default {
   border: 1px solid black;
   background: rgba(0, 0, 0, 0.286);
   margin: 0 auto 5%;
+  color: var(--off-white);
 }
 .comUsername {
-  margin: 10px 0 0 25px;
+  margin: 10px 0 0 20px;
+  color:wheat;
+}
+.buttons{
+  display:flex;
+  margin-left:-1.5%;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#del, #edit{
+  font-weight: 800;
+  height:20px;
+  background: none;
+  border :none;
+}
+#del:hover, #edit:hover{
+  color: rgb(42, 41, 41);
+  transform: scale(1.4);
+}
+#del:active, #edit:active{
+  transform: scale(0.9);
 }
 </style>

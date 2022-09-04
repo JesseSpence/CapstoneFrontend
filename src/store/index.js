@@ -4,75 +4,75 @@ import createPersistedState from "vuex-persistedstate";
 
 export default createStore({
   state: {
-    users:null,
-    user:null,
-    token:null,
-    posts:null,
-    post:null,
-    comments:null
+    users: null,
+    user: null,
+    token: null,
+    posts: null,
+    post: null,
+    comments: null
   },
   getters: {
   },
   mutations: {
-    SetUsers(state,users){
+    SetUsers(state, users) {
       state.user = users
-     },
-    SetUser(state,user){
-     state.user = user
-     
     },
-    SetToken(state,token){
+    SetUser(state, user) {
+      state.user = user
+
+    },
+    SetToken(state, token) {
       state.token = token
-     },
-     SetPosts(state,posts){
+    },
+    SetPosts(state, posts) {
       state.posts = posts
-     },
-     SetPost(state,post){
+    },
+    SetPost(state, post) {
       state.post = post
-     },
-     SetComments(state,comments){
+    },
+    SetComments(state, comments) {
       state.comments = comments
     },
-    Logout(state){
+    Logout(state) {
       state.user = "",
         state.token = ""
-      
+
     },
   },
-  actions: {   
+  actions: {
 
-     ShowUsers:async (context)=>{
-    const res = await fetch("https://jessesfoodblog.herokuapp.com/users",{
-      method:"GET",
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-    const UsersArray = await res.json();
-    console.log(UsersArray);
-    context.commit("SetUsers",UsersArray);
-    },
-
-    Verify:async (context,token)=>{
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/users/users/verify", {
-        method:"GET",
+    ShowUsers: async (context) => {
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/users", {
+        method: "GET",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
-          'x-auth-token':`${token}`
         },
       })
-      .then(res => res.json())
-      .then(userDetails =>{
-        console.log(userDetails.user);
-       context.commit("SetUser",userDetails.user)
-      } )
-   
+      const UsersArray = await res.json();
+      console.log(UsersArray);
+      context.commit("SetUsers", UsersArray);
+    },
+
+    Verify: async (context, token) => {
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/users/users/verify", {
+        method: "GET",
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+          'x-auth-token': `${token}`
+        },
+      })
+        .then(res => res.json())
+        .then(userDetails => {
+          console.log(userDetails.user);
+          context.commit("SetUser", userDetails.user)
+        })
+
       // router.push({
       //   name:"posts"
       // })
     },
-    
-    Login: async (context,payload,)=>{
+
+    Login: async (context, payload,) => {
       const res = await fetch("https://jessesfoodblog.herokuapp.com/users/login", {
         method: "POST",
         body: JSON.stringify({
@@ -86,8 +86,8 @@ export default createStore({
         .then(res => res.json())
         .then(tokendata => {
           console.log(tokendata);
-          console.log(tokendata.token); 
-           
+          console.log(tokendata.token);
+
           //if (data.token){}
           context.commit("SetToken", tokendata.token)
         });
@@ -96,108 +96,105 @@ export default createStore({
     },
 
 
-    Register: async (context,payload)=>{
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/users/register",{
-        method:"POST",
-        body: JSON.stringify({
-          name: payload.name,
-          suname:payload.surname,
-          username:payload.username,
-          email:payload.email,
-          password:payload.password,
-        }),
+    Register: async (context, payload) => {
+       await fetch("https://jessesfoodblog.herokuapp.com/users/register", {
+        mode:"cors",
+        method: "POST",
+        body: JSON.stringify(payload),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
       })
-      .then(res => res.json())
-      .then(newUserdata=>{
-        console.log(newUserdata);
-      })
+        .then(res => res.json())
+        .then(newUser => {
+          console.log(newUser);
+          context.commit("SetToken", newUser.token)
+           context.commit("setUser", json);
+        })
     },
-    
-    AddPost:async (context,Land)=>{
-        console.log(Land);
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts",{
-        method:"POST",
-        body:JSON.stringify({
-        Post:Land.Post
+
+    AddPost: async (context, Land) => {
+      console.log(Land);
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts", {
+        method: "POST",
+        body: JSON.stringify({
+          Post: Land.Post
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
-      }) 
+      })
       const added_post = res.json();
       console.log(added_post);
     },
-    ShowPosts:async (context)=>{
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts",{
-        method:"GET",
+    ShowPosts: async (context) => {
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts", {
+        method: "GET",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
       })
       const postsArray = await res.json();
       console.log(postsArray);
-      context.commit("SetPosts",postsArray);
+      context.commit("SetPosts", postsArray);
     },
-    GetPost:async (context,id)=>{
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/" + id,{
-        method:"GET",
+    GetPost: async (context, id) => {
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/" + id, {
+        method: "GET",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
       })
       const postArray = await res.json();
       console.log(postArray);
-      context.commit("SetPost",postArray);
+      context.commit("SetPost", postArray);
     },
-      DeletePost:async (id)=>{
-          const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/" + id,{
-            method:"DELETE",
-            headers: {
-              'Content-type': 'application/json; charset=UTF-8',
-            },
-          }) 
-          const deleted_post = res.json();
-          console.log(deleted_post);
-   
-      },
-    ShowComment:async (context,id)=>{
-        const res = await fetch("https://jessesfoodblog.herokuapp.com/comments/blogposts/" + id,{
-          method:"GET",
-          headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-          },
-        })
-        const comments_Array =await res.json();
-        console.log(comments_Array);
-        context.commit("SetComments",comments_Array);
+    DeletePost: async (id) => {
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/" + id, {
+        method: "DELETE",
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      const deleted_post = res.json();
+      console.log(deleted_post);
+
     },
-    
-      AddComment:async (context, payload)=>{
-        const res = await fetch("https://jessesfoodblog.herokuapp.com/comments", {
-          mode:"cors",
-          method:"POST",
-          body:JSON.stringify(payload),
-          headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-          },
-        }) 
-        const commentAdded = await res.json();
-        console.log(commentAdded);
+    ShowComment: async (context, id) => {
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/comments/blogposts/" + id, {
+        method: "GET",
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      const comments_Array = await res.json();
+      console.log(comments_Array);
+      context.commit("SetComments", comments_Array);
     },
-      
-      DeleteComment:async (id)=>{
-          const res = await fetch("https://jessesfoodblog.herokuapp.com/comments/" + id,{
-            method:"DELETE",
-            headers: {
-              'Content-type': 'application/json; charset=UTF-8',
-            },
-          }) 
-          const deleted_comment = res.json();
-          console.log(deleted_comment);
-        }
+
+    AddComment: async (context, payload) => {
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/comments", {
+        mode: "cors",
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      const commentAdded = await res.json();
+      console.log(commentAdded);
+    },
+
+    DeleteComment: async (id) => {
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/comments/" + id, {
+        method: "DELETE",
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      const deleted_comment = res.json();
+      console.log(deleted_comment);
+    }
   },
   modules: {
   },
