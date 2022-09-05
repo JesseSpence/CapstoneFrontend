@@ -18,18 +18,16 @@
 
     <h1>Mellows Food Reviews</h1>
   </div>
-  <Footer/>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-import Footer from "@/components/Footer.vue"
+
 export default {
   name: "HomeView",
   components: {
     HelloWorld,
-    Footer,
   },
 };
 </script>
@@ -45,20 +43,21 @@ video {
   top: 0;
   z-index: -1;
 }
-.landing{
-  margin: -2% auto ;
+.landing {
+  margin: -2% auto;
 }
-.landingbox, h1{
+.landingbox,
+h1 {
   z-index: 100;
   margin: 10% auto;
-  width:fit-content;
+  width: fit-content;
 }
 
 .homebox {
   z-index: 1;
   height: fit-content;
   width: fit-content;
-  margin:-5% auto -5%;
+  margin: -5% auto -5%;
 }
 
 .homepic {

@@ -9,7 +9,8 @@ export default createStore({
     token: null,
     posts: null,
     post: null,
-    comments: null
+    comments: null,
+    comment: null,
   },
   getters: {
   },
@@ -150,14 +151,15 @@ export default createStore({
       context.commit("SetPost", postArray);
     },
     DeletePost: async (id) => {
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/" + id, {
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/"+ id, {
         method: "DELETE",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
       })
-      const deleted_post = res.json();
-      console.log(deleted_post);
+        .then((res) => res.json());
+        const commentDeleted = res.json();
+      console.log(commentDeleted);
 
     },
     ShowComment: async (context, id) => {
@@ -186,13 +188,17 @@ export default createStore({
     },
 
     DeleteComment: async (id) => {
+      console.log(id);
       const res = await fetch("https://jessesfoodblog.herokuapp.com/comments/" + id, {
         method: "DELETE",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
-      })
-      const deleted_comment = res.json();
+      });
+      
+      const deleted_comment = res.json()
+      // .then((res) => deleted_comment);
+      // console.log(res);
       console.log(deleted_comment);
     }
   },

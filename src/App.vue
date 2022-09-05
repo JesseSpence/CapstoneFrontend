@@ -1,14 +1,13 @@
 <template>
   <Navbar />
   <div class="my-container">
-  <router-view />
+    <router-view />
   </div>
+  <Footer/>
 </template>
 
 <script>
 //   const span = document.getElementById("p");
-
-
 
 // span.addEventListener("copy", function(event) {
 //   event.preventDefault();
@@ -17,8 +16,9 @@
 //     console.log(event.clipboardData.getData("text"))
 //   }
 // });
+import Footer from "@/components/Footer.vue"
 import Navbar from "./components/Navbar.vue";
-import Mycontainer from "./components/Footer.vue"
+import Mycontainer from "./components/Footer.vue";
 export default {
   data() {
     return {};
@@ -27,24 +27,27 @@ export default {
     Mycontainer,
     Navbar,
     Navbar,
+    Footer
   },
 };
 </script>
 
 <style>
-:root{
-  --nav-color:rgb(35, 33, 33);
-  --float: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
---off-white:rgb(224, 221, 221);
+:root {
+  --nav-color: rgb(35, 33, 33);
+  --float: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  --off-white: rgb(224, 221, 221);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@100&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@100&family=Silkscreen&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@100&family=Silkscreen&display=swap");
 #app {
-  font-family:'Montserrat', sans-serif; ;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   margin: 0;
   width: 100vw;
@@ -54,28 +57,27 @@ export default {
   color: rgb(25, 23, 23); */
 }
 #body {
- position:fixed;
- top: 0;
- width: 100vw;
+  padding: 1%;
 }
-h1{
-  margin: 6% 0 3% 5%;
+h1 {
+  margin: 1.5% 0 3% 3%;
   padding: 0.5px 4px;
   /* font-weight:600; */
 }
-body{
-  background-color:black;
+body {
+  background-color: black;
   overflow-x: clip !important;
 }
-*{
+* {
   outline: rgba(0, 128, 0, 0.393) 0.5px solid;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;}
+  padding: 0;
+}
 nav {
   padding: 30px;
 }
-h1{
+h1 {
   background: rgba(0, 0, 0, 0.486);
   border-radius: 10px;
   box-shadow: var(--float);
@@ -88,42 +90,42 @@ nav a {
   color: #2c3e50;
 }
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #b96042;
 }
 
-    .sidebar{
-        width:250px;
-        height: 100vh;
-        position:fixed;
-        margin-left: -300px;
-        top:0;
-        transition: 0.5s;
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  margin-left: -300px;
+  top: 0;
+  transition: 0.5s;
   background: rgba(0, 0, 0, 0.714);
-    }
+}
 
-    .my-container{
-        transition: 0.4s;  
-    }
-    
-    .active-nav{
-      height: 100vh;
-        margin-left: 0%;
-    }
-    
-    .active-cont{
-        margin-left: 250px;
-    }
-   ::-webkit-scrollbar {
+.my-container {
+  transition: 0.4s;
+}
+
+.active-nav {
+  height: 100vh;
+  margin-left: 0%;
+}
+
+.active-cont {
+  margin-left: 250px;
+}
+::-webkit-scrollbar {
   width: 10px;
 }
-  ::-webkit-scrollbar-track {
-  background: rgb(35, 33, 33); 
+::-webkit-scrollbar-track {
+  background: rgb(35, 33, 33);
 }
-  ::-webkit-scrollbar-thumb {
-  background: rgb(64, 64, 64); 
-    border-radius:10px;
+::-webkit-scrollbar-thumb {
+  background: rgb(64, 64, 64);
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-} 
+  background: #555;
+}
 </style>

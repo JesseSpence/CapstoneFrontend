@@ -111,6 +111,7 @@ font-size: 2rem;
   justify-content: space-between;
 }
 .date > div {
+  
 }
 .date > p {
   white-space: nowrap;
