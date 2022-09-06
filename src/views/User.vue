@@ -1,7 +1,10 @@
 <template>
   <div class="bod" v-if="!user">
-    <div class="notfound"></div>
+    <div class="notfound">
+      <h2>user not found ...</h2>
+    </div>
   </div>
+
   <div v-if="user" id="body">
     <h1>Your Account</h1>
     <div>
@@ -68,8 +71,9 @@ export default {
 .notfound {
   height: 40vh;
   width: 60vw;
-  margin: 30% auto;
-  background: var(--nav-color);
+  padding: 2% 0 0 2%;
+  margin: 11% auto;
+  background: var(--off-white);
 }
 h1 {
   margin-left: 4%;

@@ -46,16 +46,15 @@
 export default {
   data() {
     return {
-        comment: "",
-      
+      comment: "",
     };
-    },
-  
+  },
+
   mounted() {
     this.$store.dispatch("GetPost", this.$route.params.id),
       this.$store.dispatch("ShowComment", this.$route.params.id);
-    },
-  
+  },
+
   computed: {
     post() {
       return this.$store.state.post;
@@ -93,7 +92,7 @@ export default {
   font-weight: 700;
   background: rgb(40, 2, 2);
   background: linear-gradient(0deg, rgb(153, 0, 0) 0%, rgb(245, 85, 85) 100%);
-  position: absolute;
+
   top: 0;
   width: 100vw;
   background-repeat: no-repeat;

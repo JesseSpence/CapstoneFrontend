@@ -5,8 +5,8 @@
   <div class="overlay"></div>
   <div class="landing">
     <div class="landingbox">
-      
-      <h1>HI AND WELCOME TO</h1>
+
+      <h1>OUR VIEWS ON FOODS</h1>
 
     </div>
     <div class="homebox container d-flex flex-column">
