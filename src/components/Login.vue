@@ -53,13 +53,12 @@ export default {
     return {
       email: "",
       password: "",
-      load : false,
+      load: false,
     };
   },
   methods: {
     async Login() {
       if (!this.$store.state.token) {
-
         //set token into state, starting the login process
         await this.$store.dispatch("Login", {
           email: this.email,
@@ -78,7 +77,7 @@ export default {
         sidebar.classList.toggle("active-nav");
         container.classList.toggle("active-cont");
       }
-    //user should not be able to see login once the token is set
+      //user should not be able to see login once the token is set
       else {
         console.log("how have you done this");
       }
@@ -92,9 +91,9 @@ export default {
       console.log("goodbye, see you later");
       this.$router.push("/");
     },
-    loader(){
+    loader() {
       this.load = !this.load;
-    }
+    },
   },
 };
 </script>
@@ -102,30 +101,40 @@ export default {
 #login {
   display: flex;
   flex-direction: column;
+  align-items: center;
   color: rgb(224, 221, 221);
   margin: 25% 0 0 0;
-  justify-content: center;
 }
 
 .inputgroup buttons {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 input.formcontrol {
   border-radius: 20px;
   background: rgba(48, 44, 44, 0.381);
   width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: rgb(224, 221, 221);
-  margin: 5% auto;
+
   padding: 2% 0 2% 5%;
+}
+input {
+  margin: 10% auto;
 }
 button {
   background: rgb(42, 42, 42);
   color: var(--off-white);
   border-radius: 10px;
-  margin: 1% 0 0 0;
+  margin: 1% auto 0;
   font-size: 1rem;
-  padding:5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
 }
 </style>

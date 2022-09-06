@@ -9,8 +9,10 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"
-          ><router-link class="nav-link active" to="/"><img width="50" src="https://i.ibb.co/nfvy8n7/pngwing-com.png" />
-          Mellow Reviews</router-link></a
+          ><router-link class="nav-link active" to="/"
+            ><img width="50" src="https://i.ibb.co/nfvy8n7/pngwing-com.png" />
+            Mellow Reviews</router-link
+          ></a
         >
         <button
           class="toggler"
@@ -36,17 +38,22 @@
               <router-link class="nav-link" to="/Posts">Reviews</router-link>
             </li>
             <li v-if="user" class="nav-item">
-              <router-link class="nav-link" to="/User"><i class="fa-solid fa-user"></i></router-link>
+              <router-link class="nav-link" to="/User"
+                ><i class="fa-solid fa-user"></i
+              ></router-link>
             </li>
             <li
-            class=" nav-item"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarContent"
-          aria-controls="navbarContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation" 
-            v-else  id="menu-bn" @click="accountToggle()">
+              class="nav-item"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarContent"
+              aria-controls="navbarContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              v-else
+              id="menu-bn"
+              @click="accountToggle()"
+            >
               <i class="fa-solid fa-user"></i>
             </li>
           </ul>
@@ -64,9 +71,9 @@ export default {
     Register,
   },
   computed: {
-   user() {
+    user() {
       return this.$store.state.user;
-    }, 
+    },
   },
   methods: {
     accountToggle() {
@@ -82,7 +89,7 @@ export default {
 <style scoped>
 nav {
   z-index: 1000;
-  background:var(--nav-color);
+  background: var(--nav-color);
 }
 ul {
   list-style: none;
@@ -96,7 +103,8 @@ li {
   margin: auto;
   color: var(--off-white) !important;
 }
-li:hover, .navbar-brand:hover{
+li:hover,
+.navbar-brand:hover {
   transform: scale(1.02);
 }
 
@@ -113,6 +121,11 @@ nav a.router-link-exact-active {
 }
 .navbar-toggler-icon {
   color: white !important;
+}
+.sidebar {
+  overflow-y: scroll;
+  min-height: 100%;
+  z-index: 999;
 }
 @media screen and (max-width: 992px) {
   .toggler {

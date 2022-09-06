@@ -21,11 +21,13 @@ export default {
 <style scoped>
 .body {
   width: 100vw;
+  position: relative;
+  bottom: 0;
   height: 40vh;
   color: var(--off-white);
   padding: 2%;
   background: var(--nav-color) !important;
-  z-index: 100;
+  z-index: 1;
 }
 .text {
   margin: 3% auto;

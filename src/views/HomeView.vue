@@ -2,9 +2,12 @@
   <video loop muted autoplay>
     <source src="../assets/landing-vids.mp4" />
   </video>
+  <div class="overlay"></div>
   <div class="landing">
     <div class="landingbox">
-      <h1>hi and welcome to</h1>
+      
+      <h1>HI AND WELCOME TO</h1>
+
     </div>
     <div class="homebox container d-flex flex-column">
       <div class="circlecontainer">
@@ -16,7 +19,7 @@
       </div>
     </div>
 
-    <h1>Mellows Food Reviews</h1>
+    <h1>MELLOWS REVIEWS</h1>
   </div>
 </template>
 
@@ -43,6 +46,17 @@ video {
   top: 0;
   z-index: -1;
 }
+.overlay {
+  min-width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.925);
+  z-index: -1;
+}
 .landing {
   margin: -2% auto;
 }
@@ -50,6 +64,7 @@ video {
 h1 {
   z-index: 100;
   margin: 10% auto;
+  font-weight: 900;
   width: fit-content;
 }
 

@@ -1,5 +1,8 @@
 <template>
-  <div id="body">
+  <div class="bod" v-if="!user">
+    <div class="notfound"></div>
+  </div>
+  <div v-if="user" id="body">
     <h1>Your Account</h1>
     <div>
       <div class="userbox">
@@ -7,7 +10,7 @@
         <h2>{{ user.username }}</h2>
         <h3>{{ user.name }} {{ user.surname }}</h3>
         <div class="userPic">
-          <img :src="user.profilePicture" alt="" />
+          <img class="img-fluid" :src="user.profilePicture" alt="" />
         </div>
       </div>
       <div class="buttons">
@@ -53,7 +56,23 @@ export default {
 };
 </script>
 <style scoped>
+.bod {
+  background: rgb(7, 30, 1);
+  background: linear-gradient(0deg, rgb(9, 41, 1) 0%, rgb(137, 237, 115));
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-position: cover;
+  min-height: 100vh;
+  padding: 1% 0 0 0;
+}
+.notfound {
+  height: 40vh;
+  width: 60vw;
+  margin: 30% auto;
+  background: var(--nav-color);
+}
 h1 {
+  margin-left: 4%;
 }
 .buttons {
   display: flex;
@@ -64,34 +83,21 @@ button {
   background: rgba(0, 0, 0, 0.714);
   color: var(--off-white);
 }
-i {
-  position: absolute;
-  right: 29%;
-  bottom: 20.5%;
-  filter: drop-shadow(1px 0px 10px black);
-  font-size: 3rem;
-}
-i:hover {
-  transform: scale(1.1);
-}
-i:active {
-  transform: scale(0.9);
-}
 #body {
   background: rgb(17, 1, 63);
   background: linear-gradient(0deg, rgb(2, 35, 59) 0%, rgb(115, 207, 237));
-  position: absolute;
-  top: 0;
+
   width: 100vw;
   background-repeat: no-repeat;
   background-position: cover;
   min-height: 100vh;
-  padding: 6% 0 0 0;
+  padding: 1% 0 0 0;
 }
 .userbox {
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  width: 45vw;
+  height: 400px;
   position: relative;
   background: var(--nav-color);
   border: 3px solid black;
@@ -105,17 +111,38 @@ i:active {
 
 .userPic {
   border-radius: 50%;
-  width: 250px;
-  height: 280px;
+  width: 40%;
+  margin: 2% auto;
+  min-height: 250px;
   align-self: center;
   overflow: clip;
   display: flex;
   justify-content: center;
-  border: 5px solid rgb(223, 220, 220);
+  border: 3px solid rgb(223, 220, 220);
   box-shadow: var(float);
 }
 img {
-  width: 250px;
-  height: auto;
+  height: 100%;
+}
+.img-fluid {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  overflow-x: hidden;
+}
+@media screen and (max-width: 900px) {
+  .userPic {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .userPic {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .userPic {
+    min-height: 150px;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="register">
-<h1>Register</h1>
+    <h1>Register</h1>
     <form @submit.prevent="Register">
       <div class="inputs" id="important">
         <input
@@ -88,6 +88,9 @@ export default {
 #register {
   color: rgb(224, 221, 221);
   margin: 10% 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .inputgroup {
@@ -99,14 +102,23 @@ input.formcontrol {
   border-radius: 20px;
   background: rgba(48, 44, 44, 0.381);
   width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: white;
-  margin: 5% auto;
+  margin: 10% auto;
   padding: 2% 0 2% 5%;
 }
+
 button {
   background: rgb(42, 42, 42);
-  color: black;
+  color: var(--off-white);
   border-radius: 10px;
-  margin: 1% 0 0 0;
+  margin: 1% auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  padding: 5px;
 }
 </style>

@@ -110,9 +110,6 @@ font-size: 2rem;
   display: flex; 
   justify-content: space-between;
 }
-.date > div {
-  
-}
 .date > p {
   white-space: nowrap;
         overflow: hidden;

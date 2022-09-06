@@ -3,7 +3,7 @@
   <div class="my-container">
     <router-view />
   </div>
-  <Footer/>
+  <Foooter />
 </template>
 
 <script>
@@ -16,7 +16,7 @@
 //     console.log(event.clipboardData.getData("text"))
 //   }
 // });
-import Footer from "@/components/Footer.vue"
+import Foooter from "@/components/Footer.vue";
 import Navbar from "./components/Navbar.vue";
 import Mycontainer from "./components/Footer.vue";
 export default {
@@ -27,7 +27,7 @@ export default {
     Mycontainer,
     Navbar,
     Navbar,
-    Footer
+    Foooter,
   },
 };
 </script>
@@ -53,11 +53,17 @@ export default {
   width: 100vw;
   padding: 0;
   -moz-osx-font-smoothing: grayscale;
+  max-height: fit-content !important;
+  position: absolute;
   /* text-align: center;
   color: rgb(25, 23, 23); */
 }
 #body {
   padding: 1%;
+}
+Foooter {
+  position: absolute;
+  bottom: 0;
 }
 h1 {
   margin: 1.5% 0 3% 3%;
@@ -65,11 +71,13 @@ h1 {
   /* font-weight:600; */
 }
 body {
-  background-color: black;
+  position: absolute;
+  background-color: rgb(166, 163, 163);
   overflow-x: clip !important;
+  max-height: fit-content !important;
 }
 * {
-  outline: rgba(0, 128, 0, 0.393) 0.5px solid;
+  /* outline: rgba(0, 128, 0, 0.393) 0.5px solid; */
   box-sizing: border-box;
   margin: 0;
   padding: 0;

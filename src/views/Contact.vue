@@ -4,16 +4,14 @@
       <h1>This is a contact page</h1>
       <div class="contactbox">
         <div class="side">
-
           <img
             class="img-fluid"
             src="https://i.ibb.co/h89Wr7N/pexels-jonathan-borba-2878710.jpg"
             alt=""
           />
-
         </div>
         <div class="contact">
-          <h2>contact us</h2>
+          <h2>contact us :</h2>
           <div class="icons">
             <div class="col text-center">
               <p @click="copyNum" id="p">📞</p>
@@ -28,6 +26,19 @@
               <h5>Cape Town, South Africa</h5>
             </div>
           </div>
+
+          <form action="https://formspree.io/f/xdojagpd" method="POST">
+            <label>
+              Your email:
+              <input type="email" name="email" />
+            </label>
+            <label>
+              Your message:
+              <textarea name="message"></textarea>
+            </label>
+            <!-- your other form fields go here -->
+            <button type="submit">Send</button>
+          </form>
         </div>
       </div>
     </div>
@@ -61,7 +72,19 @@ export default {
   object-fit: cover;
   overflow-x: hidden;
 }
-
+form {
+  display: flex;
+  height: 40vh;
+  font-size: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2% auto;
+}
 .body {
   padding: 1%;
   background: rgb(40, 36, 2);
@@ -80,6 +103,7 @@ h1 {
 }
 
 h2 {
+  font-size: 2.5rem;
   font-weight: 500;
 }
 h5 {
@@ -97,20 +121,24 @@ h5 {
   transform: scale(0.95);
 }
 .about {
-  height: 100vh;
+  height: fit-content;
 }
 .contact {
-  width: 57vw;
-  padding: 2%;
+  width: 56vw;
+  padding: 2% 2% 4% 2%;
+  margin: auto;
 }
 .icons {
   display: flex;
+  margin: 5% 0 5% 0;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 .contactbox {
   transform: scale(0.8);
   width: 75vw;
-  height: 80vh;
+  flex-wrap: wrap;
+  height: fit fit-content;
   border: 3px solid black;
   display: flex;
   background: rgba(0, 0, 0, 0.69);
@@ -121,7 +149,7 @@ h5 {
 .side {
   width: 18vw;
   border: 1px solid black;
-  height: 79.2vh;
+  height: 85.2vh;
   overflow: hidden;
   position: relative;
 }
@@ -133,5 +161,25 @@ h5 {
   z-index: 1000;
   filter: blur(2px);
   background: rgba(0, 0, 0, 0.953);
+}
+button {
+  background: rgb(42, 42, 42);
+  color: var(--off-white);
+  border-radius: 10px;
+  margin: 1% 0 0 0;
+  font-size: 1rem;
+  padding: 5px;
+}
+@media screen and (max-width: 820px) {
+  .side {
+    width: 75vw;
+    height: 20vh;
+  }
+}
+@media screen and (max-width: 420px) {
+  input,
+  textarea {
+    width: 80%;
+  }
 }
 </style>
