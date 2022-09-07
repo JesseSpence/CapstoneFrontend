@@ -23,9 +23,9 @@ export default {
   width: 100vw;
   position: relative;
   bottom: 0;
-  height: 40vh;
+  height: fit-content;
   color: var(--off-white);
-  padding: 2%;
+  padding: 1%;
   background: var(--nav-color) !important;
   z-index: 1;
 }
