@@ -5,9 +5,7 @@
   <div class="overlay"></div>
   <div class="landing">
     <div class="landingbox">
-
       <h1>OUR VIEWS ON FOODS</h1>
-
     </div>
     <div class="homebox container d-flex flex-column">
       <div class="circlecontainer">
@@ -59,6 +57,8 @@ video {
 }
 .landing {
   margin: -2% auto;
+  min-height: 100vh;
+  padding: 0% 0 0 0;
 }
 .landingbox,
 h1 {

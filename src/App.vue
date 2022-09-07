@@ -73,7 +73,7 @@ h1 {
 body {
   position: absolute;
   background-color: rgb(166, 163, 163);
-  overflow-x: clip !important;
+  overflow-x: hidden !important;
   max-height: fit-content !important;
 }
 * {

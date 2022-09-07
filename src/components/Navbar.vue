@@ -23,7 +23,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-ico">🍔</span>
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
           <ul class="mb-2 mb-lg-0">

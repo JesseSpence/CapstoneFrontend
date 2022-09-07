@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <div class="about">
-      <h1>This is a contact page</h1>
+      <h1>Have Questions or Advice?</h1>
       <div class="contactbox">
         <div class="side">
           <img
@@ -87,11 +87,12 @@ label {
 }
 .body {
   padding: 1%;
-  background: rgb(7, 30, 1);
-  background: linear-gradient(0deg, rgb(9, 41, 1) 0%, rgb(137, 237, 115));
+  background-color: #d15a0b;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   width: 100vw;
-  background-repeat: no-repeat;
-  background-position: cover;
+  /* background-repeat: no-repeat;
+  background-position: cover; */
   min-height: fit-content;
 }
 h1 {
