@@ -87,12 +87,8 @@ label {
 }
 .body {
   padding: 1%;
-  background: rgb(40, 36, 2);
-  background: linear-gradient(
-    0deg,
-    rgb(180, 165, 0) 0%,
-    rgb(254, 254, 106) 100%
-  );
+  background: rgb(7, 30, 1);
+  background: linear-gradient(0deg, rgb(9, 41, 1) 0%, rgb(137, 237, 115));
   width: 100vw;
   background-repeat: no-repeat;
   background-position: cover;

@@ -107,6 +107,7 @@ nav a.router-link-exact-active {
   position: fixed;
   margin-left: -300px;
   top: 0;
+  overflow-y: scroll;
   transition: 0.5s;
   background: rgba(0, 0, 0, 0.714);
 }

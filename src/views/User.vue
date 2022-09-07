@@ -1,7 +1,20 @@
 <template>
   <div class="bod" v-if="!user">
     <div class="notfound">
-      <h2>user not found ...</h2>
+      <div class="row">
+        <div class="col">
+          <h2>user not found ...</h2>
+          <h3>Error 404</h3>
+        </div>
+        <div class="col">
+          <img
+            class="img-flui"
+            src="https://i.ibb.co/PWJtDm3/giphy-10.gif"
+            width="250"
+            alt=""
+          />
+        </div>
+      </div>
     </div>
   </div>
 
@@ -60,8 +73,8 @@ export default {
 </script>
 <style scoped>
 .bod {
-  background: rgb(7, 30, 1);
-  background: linear-gradient(0deg, rgb(9, 41, 1) 0%, rgb(137, 237, 115));
+  background: rgb(10, 10, 10);
+  background: linear-gradient(0deg, rgb(17, 17, 17) 0%, rgb(88, 90, 88));
   width: 100vw;
   background-repeat: no-repeat;
   background-position: cover;
@@ -71,9 +84,17 @@ export default {
 .notfound {
   height: 40vh;
   width: 60vw;
-  padding: 2% 0 0 2%;
+  padding: 5% 0 0 2%;
   margin: 11% auto;
   background: var(--off-white);
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.img-flui {
+  justify-self: center;
 }
 h1 {
   margin-left: 4%;
@@ -119,7 +140,7 @@ button {
   margin: 2% auto;
   min-height: 250px;
   align-self: center;
-  overflow: clip;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   border: 3px solid rgb(223, 220, 220);
@@ -127,6 +148,7 @@ button {
 }
 img {
   height: 100%;
+  object-fit: cover;
 }
 .img-fluid {
   height: 100%;
@@ -147,6 +169,9 @@ img {
 @media screen and (max-width: 450px) {
   .userPic {
     min-height: 150px;
+  }
+  .img-flui {
+    width: 145px;
   }
 }
 </style>
