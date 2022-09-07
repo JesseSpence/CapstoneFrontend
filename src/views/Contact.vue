@@ -87,7 +87,7 @@ label {
 }
 .body {
   padding: 1%;
-  background-color: #d15a0b;
+   background-color: #e07b37;
   background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   width: 100vw;

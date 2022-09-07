@@ -55,6 +55,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   max-height: fit-content !important;
   position: absolute;
+  
   /* text-align: center;
   color: rgb(25, 23, 23); */
 }
@@ -71,13 +72,13 @@ h1 {
   /* font-weight:600; */
 }
 body {
-  position: absolute;
-  background-color: rgb(166, 163, 163);
+  background-color: #e07b37;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
   overflow-x: hidden !important;
   max-height: fit-content !important;
 }
 * {
-  /* outline: rgba(0, 128, 0, 0.393) 0.5px solid; */
+  outline: rgba(0, 128, 0, 0.393) 3px solid;
   box-sizing: border-box;
   margin: 0;
   padding: 0;

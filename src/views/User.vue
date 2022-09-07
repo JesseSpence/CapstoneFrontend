@@ -75,9 +75,8 @@ export default {
 .bod {
   background: rgb(10, 10, 10);
   background: linear-gradient(0deg, rgb(17, 17, 17) 0%, rgb(88, 90, 88));
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
   width: 100vw;
-  background-repeat: no-repeat;
-  background-position: cover;
   min-height: 100vh;
   padding: 1% 0 0 0;
 }
@@ -109,12 +108,10 @@ button {
   color: var(--off-white);
 }
 #body {
-  background: rgb(17, 1, 63);
-  background: linear-gradient(0deg, rgb(2, 35, 59) 0%, rgb(115, 207, 237));
+  background: rgb(211, 65, 49);
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
 
   width: 100vw;
-  background-repeat: no-repeat;
-  background-position: cover;
   min-height: 100vh;
   padding: 1% 0 0 0;
 }

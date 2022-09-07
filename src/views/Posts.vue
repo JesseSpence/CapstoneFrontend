@@ -1,6 +1,12 @@
 <template>
   <div id="body">
     <h1>Our Food Reviews</h1>
+    <input
+      type="text"
+      v-model="search"
+      id="searchbar"
+      placeholder="something in mind?"
+    />
     <div v-if="posts" class="posts">
       <div v-for="post in posts" :key="post.id">
         <router-link
@@ -33,31 +39,53 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      search: "",
+    };
   },
   mounted() {
     this.$store.dispatch("ShowPosts");
   },
   computed: {
     posts() {
-      return this.$store.state.posts;
+      return this.$store.state.posts?.filter((post) => {
+        let isMatch = true;
+        if (!post.title.toLowerCase().includes(this.search.toLowerCase()))
+          isMatch = false;
+        // if (this.category !== "all" && product.category !== this.category) isMatch = false;
+        // if (this.company !== "all" && product.company !== this.company) isMatch = false;
+        return isMatch;
+      });
     },
   },
 };
 </script>
 
 <style scoped>
+#searchbar {
+  margin: 2% auto;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.486);
+  border-radius: 10px;
+  box-shadow: var(--float);
+  border: 2px solid black;
+  color: var(--off-white);
+  width: fit-content;
+}
 a {
   text-decoration: none;
 }
 
 #body {
-  background-color: #d15a0b;
-  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+  display: flex;
+  flex-direction: column;
+  background-color: #e07b37;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   /* background-repeat: no-repeat;
   background-position: cover; */
-  min-height: 100vw;
+  padding: 1% 0 5% 0;
+  min-height: 100vw !important;
 }
 
 .top {
@@ -74,6 +102,7 @@ a {
   box-shadow: var(--float);
   display: flex;
   padding: 2% 2% 1% 1%;
+  margin: 5% 0 5% 0;
   text-align: center;
   flex-direction: column;
 
@@ -129,7 +158,7 @@ h5 {
 }
 
 .posts {
-  padding: 0 5%;
+  padding: 3% 5%;
   display: flex;
   justify-content: space-around;
   gap: 10%;

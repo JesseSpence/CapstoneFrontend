@@ -102,10 +102,11 @@ li {
   padding: 1%;
   margin: auto;
   color: var(--off-white) !important;
+  transition: all ease-in-out 0s;
 }
 li:hover,
 .navbar-brand:hover {
-  transform: scale(1.02);
+  transform: scale(1.1);
 }
 
 nav a.router-link-exact-active {

@@ -9,7 +9,7 @@
           <span></span>
 
           <span></span>
-          
+
           <span></span>
         </div>
       </div>
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="comments">
         <div v-if="comments">
           <div v-for="comment in comments" :key="comment.id">
@@ -170,13 +170,10 @@ export default {
 #body {
   color: black;
   font-weight: 700;
-  background: rgb(40, 2, 2);
-  background: linear-gradient(0deg, rgb(153, 0, 0) 0%, rgb(245, 85, 85) 100%);
-
+  background-color: #d15a0b;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
   top: 0;
   width: 100vw;
-  background-repeat: no-repeat;
-  background-position: cover;
 }
 h1 {
   margin: 5% 0 2% 5%;
