@@ -3,25 +3,27 @@
   <div v-if="active" id="modal">
     <form class="iputs">
       <p>name</p>
-      <input type="text" v-model="name" />
+      <input type="text" v-model="user.name" />
       <p>surname</p>
-      <input type="text" v-model="surname" />
+      <input type="text" v-model="user.surname" />
       <p>email</p>
-      <input type="email" v-model="email" />
+      <input type="email" v-model="user.email" />
       <p>password</p>
-      <input type="text" v-model="password" />
+      <input type="text" v-model="user.password" />
       <p>username</p>
-      <input type="text" v-model="username" />
+      <input type="text" v-model="user.username" />
       <p>contact no.</p>
-      <input type="number" v-model="contact" />
+      <input type="number" v-model="user.contact" />
       <p>type</p>
-      <input type="text" v-model="type" />
+      <input type="text" v-model="user.type" />
+       <p>profilePicture</p>
+      <input type="text" v-model="user.profilePicture" />
       <div class="row mt-5">
         <div class="col">
           <button @click="toggleModal">cancel</button>
         </div>
         <div class="col">
-          <button @click="updateUser">update</button>
+          <button @click.prevent="updateUser(user.id)">update</button>
         </div>
       </div>
     </form>
@@ -30,6 +32,7 @@
 
 <script>
 export default {
+   props: ["user"],
   data() {
     return {
       active: false,
@@ -46,6 +49,25 @@ export default {
   methods: {
     toggleModal() {
       this.active = !this.active;
+    },
+
+    updateUser(id) {
+      console.log(id);
+      return this.$store.dispatch("updateUser", id, {
+        name:this.name,
+              surname:this.surname,
+              email:this.email,
+              password:this.password,
+              username:this.username,
+              contact: this.contact,
+              type: this.type,
+              profilePicture: this.profilePicture,
+      });
+    },
+  },
+   computed: {
+    user() {
+      return this.$store.state.user;
     },
   },
 };

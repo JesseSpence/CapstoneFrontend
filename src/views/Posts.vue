@@ -7,6 +7,10 @@
       id="searchbar"
       placeholder="something in mind?"
     />
+    <div v-if="!posts">
+    <loader/>
+    </div>
+
     <div v-if="posts" class="posts">
       <div v-for="post in posts" :key="post.id">
         <router-link
@@ -15,7 +19,7 @@
           <div class="post">
             <div class="top">
               <h3>{{ post.title }}</h3>
-              <img width="40" :src="post.logo" alt="" />
+              <img width="45" height="50" :src="post.logo" alt="" />
             </div>
             <div class="foodpic">
               <img width="200" :src="post.foodimage" alt="" />
@@ -37,12 +41,16 @@
   </div>
 </template>
 <script>
+import loader from "@/components/loader.vue"
 export default {
   data() {
     return {
       search: "",
     };
   },
+  components: {
+  loader,
+},
   mounted() {
     this.$store.dispatch("ShowPosts");
   },
@@ -102,7 +110,7 @@ a {
   box-shadow: var(--float);
   display: flex;
   padding: 2% 2% 1% 1%;
-  margin: 5% 0 5% 0;
+  margin: 5% 0 10% 0;
   text-align: center;
   flex-direction: column;
 

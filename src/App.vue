@@ -78,7 +78,7 @@ body {
   max-height: fit-content !important;
 }
 * {
-  outline: rgba(0, 128, 0, 0.393) 3px solid;
+  /* outline: rgba(0, 128, 0, 0.393) 3px solid; */
   box-sizing: border-box;
   margin: 0;
   padding: 0;

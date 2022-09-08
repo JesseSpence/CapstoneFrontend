@@ -1,18 +1,7 @@
 <template>
   <div id="body">
     <div v-if="!post">
-      <div class="loader">
-        <i class="fas fa-utensils loader-icone"></i>
-        <p>Loading</p>
-
-        <div class="loader-ellipses">
-          <span></span>
-
-          <span></span>
-
-          <span></span>
-        </div>
-      </div>
+      <loader />
     </div>
 
     <div v-if="post">
@@ -30,7 +19,7 @@
         <div v-if="comments">
           <div v-for="comment in comments" :key="comment.id">
             <div class="fullcom">
-              <div v-if="Commentor">
+              <div v-if="(commenter = true)">
                 <div v-if="Commenter.type === 'admin'" class="buttons">
                   <button @click="deleteCom(comment.id)" name="" id="del">
                     ✗
@@ -62,13 +51,16 @@
   </div>
 </template>
 <script>
+import loader from "@/components/loader.vue";
 export default {
   data() {
     return {
       comment: "",
     };
   },
-
+  components: {
+    loader,
+  },
   mounted() {
     this.$store.dispatch("GetPost", this.$route.params.id),
       this.$store.dispatch("ShowComment", this.$route.params.id);
@@ -100,73 +92,15 @@ export default {
 
     deleteCom(id) {
       console.log(id);
-      this.$store.dispatch("DeleteComment", id);
+        this.$store.dispatch("DeleteComment", id);
+      setTimeout(() => {
+        this.$router.go();
+      }, 2000);
     },
   },
 };
 </script>
 <style scoped>
-.loader {
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  left: 0;
-  top: 0;
-}
-
-.loader p {
-  color: white;
-}
-
-.loader-icone {
-  font-size: 4em;
-  margin-bottom: 50px;
-  color: #e2b299;
-  animation: rotate 2000ms infinite;
-}
-
-.loader-ellipses {
-  display: flex;
-  width: 100px;
-  justify-content: space-between;
-}
-
-.loader-ellipses span {
-  background-color: #dc8056;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  opacity: 0;
-  animation: loader-grow 2000ms infinite alternate;
-}
-
-.loader-ellipses span:nth-child(2) {
-  animation-delay: 400ms;
-}
-
-.loader-ellipses span:nth-child(3) {
-  animation-delay: 800ms;
-}
-
-@keyframes loader-grow {
-  to {
-    transform: scale(1.2);
-    background-color: #ff798f;
-    opacity: 100%;
-  }
-}
-
-@keyframes rotate {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 #body {
   color: black;
   font-weight: 700;
@@ -180,16 +114,18 @@ h1 {
   /* font-weight:600; */
 }
 #review {
+  text-align: justify;
+  word-wrap: wrap;
   background: var(--off-white);
 }
 #foodpic {
-  position: absolute;
-  right: 5%;
-  top: 30%;
+  margin-top: -10%;
+  float: right;
 }
 .review {
   margin: auto;
   width: 80vw;
+  position: relative;
   background: var(--off-white);
   border: 3px solid black;
   border-radius: 10px;
