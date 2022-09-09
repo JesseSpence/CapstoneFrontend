@@ -88,7 +88,6 @@ export default {
 </script>
 <style scoped>
 nav {
-  position: sticky;
   top: 0;
   width: 100vw;
   z-index: 1000;
@@ -123,10 +122,9 @@ nav a.router-link-exact-active {
 .toggler {
   display: none;
   background-color: rgba(0, 0, 0, 0.386);
-   padding-right: 2%;
+   margin-right: 2%;
 }
 .navbar-toggler-icon {
- 
   color: white !important;
 }
 .sidebar {

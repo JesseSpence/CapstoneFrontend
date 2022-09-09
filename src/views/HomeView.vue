@@ -7,30 +7,96 @@
     <div class="landingbox">
       <h1>OUR VIEWS ON FOODS</h1>
     </div>
-    <div class="homebox container d-flex flex-column">
+    <div class="Slider">
+	<carousel
+	@nex="nex"
+	@prev="prev"
+	>
+	<carousel-slide v-for="(slide,index) in slides" :key="slide" :index="index" :visibleSlide="visibleSlide"> 
+
+
+		<div class="homebox container d-flex flex-column">
       <div class="circlecontainer">
-        <img
-          class="py-2 homepic"
-          src="https://i.ibb.co/x769VpW/P2w9-G5-AB-male-5-cartoon4.png"
-          alt="Jesse Spence Portfolio Picture"
-        />
+		<img class="py-2 homepic" :src="slide.img"/>
+
       </div>
     </div>
+	</carousel-slide>
+	</carousel>
+</div>
 
     <h1>MELLOWS REVIEWS</h1>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Carousel from "@/components/Carousel.vue";
+import CarouselSlide from "@/components/CarouselSlide.vue";
 
 export default {
   name: "HomeView",
+
   components: {
-    HelloWorld,
-  },
-};
+		Carousel ,
+			CarouselSlide
+		},
+
+    data() {
+			return {
+				slides: [
+					{ 'img': 'https://i.ibb.co/Y25WW8s/giphy-5.gif',
+					},
+					{
+						'img': 'https://i.ibb.co/19FL5Ch/giphy-2.gif',
+						
+					    },
+					{
+						'img': 'https://i.ibb.co/6RqsgN5/giphy-7.gif',
+						
+						
+					},
+					{
+						'img': 'https://i.ibb.co/ZBmhvMH/giphy-4.gif',
+					    
+						
+					},
+					{
+						'img': 'https://i.ibb.co/8smVT02/giphy-8.gif',
+					    
+						
+					},
+					{ 'img': 'https://i.ibb.co/8jmCs88/giphy-9.gif',
+					   
+
+					}
+				],
+				visibleSlide : 0,
+			}
+		},
+
+    computed: {
+		slideslen(){
+				return this.slides.length;
+			}
+		},
+		methods: {
+			nex() {
+				if(this.visibleSlide >= this.slideslen - 1) {
+					this.visibleSlide = 0;
+				}else {
+					this.visibleSlide++;
+				}
+			},
+			prev() {
+				if (this.visibleSlide <= 0) {
+					this.visibleSlide = this.slideslen - 1
+				} else {
+					this.visibleSlide--;
+				}
+			}
+
+	},
+}
 </script>
 
 <style scoped>
@@ -80,6 +146,7 @@ h1 {
   position: absolute;
   width: 200px;
   border-radius: 70%;
+  height:100%;
 }
 .circlecontainer {
   display: flex;

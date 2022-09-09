@@ -7,10 +7,11 @@ export default createStore({
     users: null,
     user: null,
     token: null,
-    posts: null,
+    posts: "",
     post: null,
     comments: null,
     comment: null,
+    asc: true,
     Likedposts: [],
   },
   getters: {
@@ -47,6 +48,15 @@ export default createStore({
     },
     removeFromLikedposts: (state, Likedposts) => {
       state.Likedposts = Likedposts;
+    },
+    sortPostsByRating: (state) => {
+      state.posts = state.posts.sort((a, b) => {
+        return a.rating - b.rating;
+      }); console.log(state.posts);
+      if (!state.asc) {
+        state.posts.reverse();
+      }
+      state.asc = !state.asc;
     },
   },
   actions: {
@@ -118,7 +128,7 @@ export default createStore({
         .then(newUser => {
           console.log(newUser);
           context.commit("SetToken", newUser.token)
-          
+
         })
     },
 
@@ -169,9 +179,9 @@ export default createStore({
           'Content-type': 'application/json; charset=UTF-8',
         },
       })
-      const postsArray = await res.json();
-      console.log(postsArray);
-      context.commit("SetPosts", postsArray);
+      const posts = await res.json();
+      console.log(posts);
+      context.commit("SetPosts", posts);
     },
     GetPost: async (context, id) => {
       const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/" + id, {
@@ -180,9 +190,9 @@ export default createStore({
           'Content-type': 'application/json; charset=UTF-8',
         },
       })
-      const postArray = await res.json();
-      console.log(postArray);
-      context.commit("SetPost", postArray);
+      const post = await res.json();
+      console.log(post);
+      context.commit("SetPost", post);
     },
     DeletePost: async (id) => {
       const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/" + id, {
@@ -214,8 +224,8 @@ export default createStore({
     //   console.log(id);
 
 
-      // this.state.cart.product.push(id);
-      // context.dispatch("updateCart", this.state.cart);
+    // this.state.cart.product.push(id);
+    // context.dispatch("updateCart", this.state.cart);
     // },
     deleteFromLikedposts: async (context, id) => {
       console.log(id);

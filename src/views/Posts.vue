@@ -7,12 +7,13 @@
       id="searchbar"
       placeholder="something in mind?"
     />
+    <button class="" @click="Ratings()">Sort</button>
     <div v-if="!posts">
       <loader />
     </div>
 
     <div v-if="posts" class="posts">
-      <div v-for="(post, index) in posts" :key="post">
+      <div class="heart" v-for="(post, index) in posts" :key="post">
           <router-link
             :to="{ name: 'single blog post view', params: { id: post.id } }"
           >
@@ -57,6 +58,7 @@ export default {
   data() {
     return {
       search: "",
+      asc:true,
     };
   },
   components: {
@@ -64,6 +66,8 @@ export default {
   },
   mounted() {
     this.$store.dispatch("ShowPosts");
+
+    
   },
   computed: {
     posts() {
@@ -92,11 +96,24 @@ export default {
         this.$store.dispatch("deleteFromLikedposts", post);
       }
     },
+    Ratings() {
+          this.$store.commit("sortPostsByRating");
+          
+        },
   },
+
 };
 </script>
 
 <style scoped>
+  i{
+    position: absolute;
+    top:25%;
+    font-size: 2rem;
+    left:-2%;
+  }
+  .heart{position:relative}
+
 .there {
   color: grey;
 }
@@ -185,21 +202,22 @@ span {
   text-overflow: clip;
   width: 181.5px;
 }
-/* .date::after{
-  content: "";
-  height: 35px;
-  width :110px;
-  transform: rotateZ(-7deg);
-position: absolute;
-background: var(--nav-color);
-left: 70.5%;
-margin-top:-1%;
-} */
 
 h5 {
   text-align: left;
 }
-
+button {
+  background: rgb(42, 42, 42);
+  color: var(--off-white);
+  border-radius: 10px;
+  margin: 1% auto 0;
+  font-size: 1rem;
+  display: flex;
+  z-index: 100000;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
 .posts {
   padding: 3% 5%;
   display: flex;
