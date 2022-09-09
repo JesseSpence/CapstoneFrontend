@@ -88,6 +88,8 @@ export default {
 </script>
 <style scoped>
 nav {
+  position:fixed;
+  width:100vw;
   z-index: 1000;
   background: var(--nav-color);
 }

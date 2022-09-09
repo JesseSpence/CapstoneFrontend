@@ -50,7 +50,7 @@ export default createStore({
     },
   },
   actions: {
-//users
+    //users
     ShowUsers: async (context) => {
       const res = await fetch("https://jessesfoodblog.herokuapp.com/users", {
         method: "GET",
@@ -106,8 +106,8 @@ export default createStore({
     },
 
     Register: async (context, payload) => {
-       await fetch("https://jessesfoodblog.herokuapp.com/users/register", {
-        mode:"cors",
+      await fetch("https://jessesfoodblog.herokuapp.com/users/register", {
+        mode: "cors",
         method: "POST",
         body: JSON.stringify(payload),
         headers: {
@@ -118,36 +118,36 @@ export default createStore({
         .then(newUser => {
           console.log(newUser);
           context.commit("SetToken", newUser.token)
-           context.commit("setUser", json);
+          context.commit("setUser", json);
         })
     },
 
-      updateUser: async (context, payload) => {
-        console.log(payload)
-        fetch(`https://jessesfoodblog.herokuapp.com/users/` + payload, {
-          mode:"cors",
-          method: "PUT",
-          body: JSON.stringify(
-            {
-              name:payload.name,
-              surname:payload.surname,
-              email:payload.email,
-              password:payload.password,
-              username:payload.username,
-              contact: payload.contact,
-              type: payload.type,
-              profilePicture: payload.profilePicture,
-             }
-          ),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        })
-          .then((response) => response.json())
-          .then(() => context.dispatch("setUser"));
+    updateUser: async (context, payload) => {
+      console.log(payload)
+      fetch(`https://jessesfoodblog.herokuapp.com/users/` + payload, {
+        mode: "cors",
+        method: "PUT",
+        body: JSON.stringify(
+          {
+            name: payload.name,
+            surname: payload.surname,
+            email: payload.email,
+            password: payload.password,
+            username: payload.username,
+            contact: payload.contact,
+            type: payload.type,
+            profilePicture: payload.profilePicture,
+          }
+        ),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then(() => context.dispatch("setUser"));
     },
-      
-//posts
+
+    //posts
     AddPost: async (context, Land) => {
       console.log(Land);
       const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts", {
@@ -185,45 +185,45 @@ export default createStore({
       context.commit("SetPost", postArray);
     },
     DeletePost: async (id) => {
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/"+ id, {
+      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/" + id, {
         method: "DELETE",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
       })
         .then((res) => res.json());
-        const commentDeleted = res.json();
+      const commentDeleted = res.json();
       console.log(commentDeleted);
 
     },
 
     //likedposts
- getLikedposts: async (context) => {
-  fetch(`https://jessesfoodblog.herokuapp.com/blogposts`)
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.length === 0) {
-        console.log(data);
-      } else {
-        context.commit("setPosts", data);
-        // console.log(data);
-      }
-    });
-},
-addToLikedposts: async (context, id) => {
-  console.log(id);
+    getLikedposts: async (context) => {
+      fetch(`https://jessesfoodblog.herokuapp.com/blogposts`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.length === 0) {
+            console.log(data);
+          } else {
+            context.commit("setPosts", data);
+            // console.log(data);
+          }
+        });
+    },
+    // addToLikedposts: async (context, id) => {
+    //   console.log(id);
 
- 
-  // this.state.cart.product.push(id);
-  // context.dispatch("updateCart", this.state.cart);
-},
-deleteFromLikedposts: async (context, id) => {
-  const newLikedposts = context.state.Likedposts.filter(
-    (post) => post.id != id
-  );
- 
-  context.commit("removeFromLikedposts", newLikedposts);
-},
+
+      // this.state.cart.product.push(id);
+      // context.dispatch("updateCart", this.state.cart);
+    // },
+    deleteFromLikedposts: async (context, id) => {
+      const newLikedposts = context.state.Likedposts.filter(
+        (post) => post.id != id
+      );
+
+      context.commit("removeFromLikedposts", newLikedposts);
+    },
 
     //comments
     ShowComment: async (context, id) => {
@@ -253,20 +253,20 @@ deleteFromLikedposts: async (context, id) => {
 
     DeleteComment: async (context, id) => {
       // console.log(payload);
-       await fetch(`https://jessesfoodblog.herokuapp.com/comments/` + id, {
-        mode:"cors",
+      await fetch(`https://jessesfoodblog.herokuapp.com/comments/` + id, {
+        mode: "cors",
         method: "DELETE",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
       })
-      
-      // const deleted_comment = res.json()
-      // .then((res) => deleted_comment);
-      // console.log(res);
-      .then((response) => response.json())
+
+        // const deleted_comment = res.json()
+        // .then((res) => deleted_comment);
+        // console.log(res);
+        .then((response) => response.json())
         .then(() => context.commit("SetComments"));
-        
+
       // console.log(deleted_comment);
     }
   },

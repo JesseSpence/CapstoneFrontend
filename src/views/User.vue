@@ -33,10 +33,15 @@
         <button @click="Logout">Logout</button>
       </div>
     </div>
+    <div class="liked">
+    <Likedposts/>
   </div>
+  </div>
+  
 </template>
 
 <script>
+  import Likedposts from "@/components/Likedposts.vue"
 import update from "../components/updateModal.vue";
 export default {
   data() {
@@ -46,6 +51,7 @@ export default {
   },
   components: {
     update,
+    Likedposts
   },
   computed: {
     user() {

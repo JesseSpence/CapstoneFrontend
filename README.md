@@ -1,4 +1,4 @@
-# jesse_capstone_frontend
+# jesse_Mellow_Reviews
 
 ## Project setup
 ```
@@ -7,6 +7,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
+
 npm run serve
 ```
 

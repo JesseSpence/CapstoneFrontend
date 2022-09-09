@@ -1,5 +1,5 @@
 <template>
-  <video loop muted autoplay>
+  <video loop playsinline muted autoplay>
     <source src="../assets/landing-vids.mp4" />
   </video>
   <div class="overlay"></div>
@@ -52,7 +52,7 @@ video {
   position: fixed;
   left: 0;
   top: 0;
-  background: rgba(0, 0, 0, 0.925);
+  background: rgba(0, 0, 0, 0.741);
   z-index: -1;
 }
 .landing {

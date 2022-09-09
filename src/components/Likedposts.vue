@@ -22,22 +22,7 @@
         </div>
       </div>
     
-    <div class="card">
-      <h5>CART SUMMARY</h5>
-      <div class="cart-details">
-        <div class="row">
-          <p>Subtotal:</p>
-          <p>Shipping:</p>
-        </div>
-        <div class="row">
-          <p>R{{ calculatePrice }}</p>
-          <p>Free shipping</p>
-        </div>
-      </div>
-      <router-link to="/checkout">
-        <button type="submit" class="button-17">Checkout</button>
-      </router-link>
-    </div>
+    
   </body>
 </template>
 
@@ -54,14 +39,14 @@ export default {
     },
   },
   computed: {
-    calculatePrice() {
-      // console.log($store.state.currentValue)
-      return this.$store.state.cart.reduce((accumulator, currentValue) => {
-        return accumulator + parseInt(currentValue.price);
-      }, 0);
-    },
+    // calculatePrice() {
+    //   // console.log($store.state.currentValue)
+    //   return this.$store.state.cart.reduce((accumulator, currentValue) => {
+    //     return accumulator + parseInt(currentValue.price);
+    //   }, 0);
+    // },
     Likedposts() {
-      return this.$store.state.cart;
+      return this.$store.state.Likedposts
     },
     product() {
       return this.$store.state.product;
