@@ -17,7 +17,7 @@
     <div class="text text-center">
       <h2>MELLOW REVIEWS</h2>
       <p>copy right <i class="fa-regular fa-copyright"></i></p>
-      <p>designed and build by</p>
+      <p>Front-end design ＆ back-end built by</p>
       <h5>꧁ Jesse Spence ꧂</h5>
     </div>
   </div>
