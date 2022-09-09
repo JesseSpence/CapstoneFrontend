@@ -41,12 +41,21 @@
 }
 .prev{
     position:absolute;
-    left:35%;
+    left:25vw;
     top:40%;
 }
 .nex{
     position:absolute;
-    right:35%;
+    right:25vw;
     top:40%;
+}
+
+@media screen and (max-width:500px) {
+    .prev{
+    left:10vw;
+}
+.nex{
+    right:10vw;
+}
 }
     </style>
