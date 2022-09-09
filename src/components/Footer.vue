@@ -2,7 +2,7 @@
   <div class="body">
     <div class="row">
 
-      <div class="col-lg-3 text-center" >
+      <div class="col-lg-3 text-center pe-2" >
         <ul class="contact-list">
           <li class="list-item"><i class="fa fa-map-marker "><span class="ms-2 contact-text">Capetown, South Africa</span></i></li>
           
@@ -65,7 +65,8 @@ export default {
   margin: 3% auto;
 }
 .contact-list {
-  list-style-type: none;
+  padding:0;
+    list-style-type: none;
 }
 .list-item {
   line-height: 4;
