@@ -55,7 +55,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   max-height: fit-content !important;
   position: absolute;
-  
+
   /* text-align: center;
   color: rgb(25, 23, 23); */
 }
@@ -115,6 +115,7 @@ nav a.router-link-exact-active {
 
 .my-container {
   transition: 0.4s;
+  min-height: 100vh;
 }
 
 .active-nav {

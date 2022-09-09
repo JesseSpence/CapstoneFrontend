@@ -19,7 +19,7 @@
         <div v-if="comments">
           <div v-for="comment in comments" :key="comment.id">
             <div class="fullcom">
-              <div v-if="(commenter = true)">
+              <div v-if="commenter === true">
                 <div v-if="Commenter.type === 'admin'" class="buttons">
                   <button @click="deleteCom(comment.id)" name="" id="del">
                     ✗
@@ -92,7 +92,7 @@ export default {
 
     deleteCom(id) {
       console.log(id);
-        this.$store.dispatch("DeleteComment", id);
+      this.$store.dispatch("DeleteComment", id);
       setTimeout(() => {
         this.$router.go();
       }, 2000);

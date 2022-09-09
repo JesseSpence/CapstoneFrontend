@@ -5,7 +5,7 @@
       <Register />
     </section>
   </div>
-  <div>
+  <div class="">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"
@@ -88,8 +88,9 @@ export default {
 </script>
 <style scoped>
 nav {
-  position:fixed;
-  width:100vw;
+  position: sticky;
+  top: 0;
+  width: 100vw;
   z-index: 1000;
   background: var(--nav-color);
 }
@@ -97,6 +98,7 @@ ul {
   list-style: none;
   display: flex;
   width: 35vw;
+  padding-right: 2%;
   margin: 0 0 0 60%;
 }
 
@@ -121,8 +123,10 @@ nav a.router-link-exact-active {
 .toggler {
   display: none;
   background-color: rgba(0, 0, 0, 0.386);
+   padding-right: 2%;
 }
 .navbar-toggler-icon {
+ 
   color: white !important;
 }
 .sidebar {

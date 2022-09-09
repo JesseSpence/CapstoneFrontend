@@ -1,29 +1,15 @@
 <template>
-  <body>
-    
-      <div id="box">
-        <div class="content">
-          <div class="card" v-for="post in Likedposts" :key="post.id">
-            <img :src="post.logo" class="mb-2" alt="food" />
-            <div class="cart-content">
-              <h3 class="ms-5">{{ post.title}}</h3>
-             
-             
-              
-              <button @click="deleteFromCart(product.id)" class="button-17">
-                <i class="fa fa-trash"></i>
-                <span class="btn2"></span>
-              </button>
-              <div class="right-bar">
-                <hr />
-              </div>
-            </div>
-          </div>
-        </div>
+  <div id="likebox">
+    <h2>Reviews I like</h2>
+    <div class="likecard" v-for="post in Likedposts" :key="post.id">
+      <img width="100" :src="post.logo" class="mb-2" alt="food" />
+      <div class="cart-content">
+        <h3>{{ post.title }}</h3>
+
+        <i id="deletebtn" @click="deleteFromLikedposts(post.id)">🧡</i>
       </div>
-    
-    
-  </body>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -46,7 +32,7 @@ export default {
     //   }, 0);
     // },
     Likedposts() {
-      return this.$store.state.Likedposts
+      return this.$store.state.Likedposts;
     },
     product() {
       return this.$store.state.product;
@@ -54,3 +40,23 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#likebox {
+  text-align: center;
+  padding: 2%;
+}
+.likecard {
+  width: 40%;
+  margin: 1% auto;
+  background: rgba(128, 128, 128, 0.605);
+  border: 5px solid black;
+  color: var(--nav-color);
+}
+h2 {
+  font-weight: 600;
+}
+#deletebtn {
+  font-size: 2rem;
+}
+</style>

@@ -25,7 +25,7 @@
           required
         />
       </div>
-      {{ password }}
+
       <div class="buttons">
         <button @click="loader" type="submit">Login</button>
         <!-- <div v-if="token">

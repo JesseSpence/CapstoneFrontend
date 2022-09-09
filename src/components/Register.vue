@@ -55,11 +55,13 @@
         {{ password }}
       </div>
 
-      <button type="submit">Register</button>
+      <button @click="Verify" type="submit">Register</button>
     </form>
   </div>
+  <verify/>
 </template>
 <script>
+import verify from "@/components/verify.vue";
 export default {
   data() {
     return {
@@ -68,17 +70,42 @@ export default {
       username: "",
       email: "",
       password: "",
+      verification: false,
     };
   },
+  components: {
+    verify,
+  },
   methods: {
-    Register() {
-      this.$store.dispatch("Register", {
-        name: this.name,
-        surname: this.surname,
-        email: this.email,
-        password: this.password,
-        username: this.username,
-      });
+    async Register() {
+      await this.$store
+        .dispatch("Register", {
+          name: this.name,
+          surname: this.surname,
+          email: this.email,
+          password: this.password,
+          username: this.username,
+        })
+        .then(
+          //run login using the email and password
+          await this.$store.dispatch("Login", {
+            email: this.email,
+            password: this.password,
+          })
+        )
+        .then((this.verification = !this.verification));
+      // .then(
+      //   //run verify to set the user
+      //   //then login and set user into state
+      //   await this.$store.dispatch("Verify", this.token),
+
+      //   //load the user page
+      //   setTimeout(this.$router.push("/User"), 10000)
+      // );
+    },
+
+    Verify() {
+      this.verification = !this.verification;
     },
   },
 };
@@ -106,6 +133,7 @@ input.formcontrol {
   flex-direction: column;
   align-items: center;
   color: white;
+  font-weight: 500;
   margin: 10% auto;
   padding: 2% 0 2% 5%;
 }

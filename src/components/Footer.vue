@@ -21,8 +21,6 @@ export default {
 <style scoped>
 .body {
   width: 100vw;
-  position: relative;
-  bottom: 0;
   height: fit-content;
   color: var(--off-white);
   padding: 1%;

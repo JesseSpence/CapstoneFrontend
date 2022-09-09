@@ -118,7 +118,7 @@ export default createStore({
         .then(newUser => {
           console.log(newUser);
           context.commit("SetToken", newUser.token)
-          context.commit("setUser", json);
+          
         })
     },
 
@@ -218,8 +218,9 @@ export default createStore({
       // context.dispatch("updateCart", this.state.cart);
     // },
     deleteFromLikedposts: async (context, id) => {
+      console.log(id);
       const newLikedposts = context.state.Likedposts.filter(
-        (post) => post.id != id
+        (post) => post.id !== id
       );
 
       context.commit("removeFromLikedposts", newLikedposts);

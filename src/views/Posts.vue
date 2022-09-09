@@ -8,55 +8,60 @@
       placeholder="something in mind?"
     />
     <div v-if="!posts">
-    <loader/>
+      <loader />
     </div>
 
     <div v-if="posts" class="posts">
-      <div v-for="post in posts" :key="post.id">
-        
-          <div class="post">
-            <router-link
-          :to="{ name: 'single blog post view', params: { id: post.id } }"
-        >
+      <div v-for="(post, index) in posts" :key="post">
+          <router-link
+            :to="{ name: 'single blog post view', params: { id: post.id } }"
+          >
+        <div class="post">
             <div class="top">
-              <h3>{{ post.title }}</h3> 
+              <h3>{{ post.title }}</h3>
               <img width="45" height="50" :src="post.logo" alt="" />
             </div>
-          </router-link>
-            <div class="foodpic">
-              <img width="200" :src="post.foodimage" alt="" />
-            </div>
-            <div class="postdeets">
-              <h5>
-                rating : <span>{{ post.rating }}/10</span>
-              </h5> 
-              
-              
-              <p>{{ post.restaurant }}</p>
-              <div class="date">
-                <div>post no : {{ post.id }}</div>
-                <p>created on : {{ post.createDate }}</p>
-              </div>
-            </div>
-            <i id="like" class="there" @click=" dislikePost(post.id), likePost(post.id)">RR</i>
-            <!-- <i id="dislike" class="away" @click="dislikePost(post)">RR</i> -->
+          
+          <div class="foodpic">
+            <img width="200" :src="post.foodimage" alt="" />
           </div>
-       
+          <div class="postdeets">
+            <h5>
+              rating : <span>{{ post.rating }}/10</span>
+            </h5>
+
+            <p>{{ post.restaurant }}</p>
+            <div class="date">
+              <div>post no : {{ post.id }}</div>
+              <p>created on : {{ post.createDate }}</p>
+            </div>
+          </div>
+          
+          <!-- <i id="dislike" class="away" @click="dislikePost(post)">RR</i> -->
+        </div>
+</router-link>
+<i
+            :id="'likebtn' + index"
+            class="there"
+            @click="likePost(index, post)"
+            ><i class="fa-solid fa-heart"></i></i
+          >
       </div>
     </div>
   </div>
 </template>
 <script>
-import loader from "@/components/loader.vue"
+import loader from "@/components/loader.vue";
 export default {
+  props: ["id", "post"],
   data() {
     return {
       search: "",
     };
   },
   components: {
-  loader,
-},
+    loader,
+  },
   mounted() {
     this.$store.dispatch("ShowPosts");
   },
@@ -73,32 +78,31 @@ export default {
     },
   },
   methods: {
-    likePost(post) {
-      const likebtn = document.getElementById("like");
-     if(likebtn.classList == "there") {
-      console.log('liked a post');
-      this.$store.commit("updateLikedposts", post);
-      likebtn.classList.toggle("away");
-     }
-     else {
-      likebtn.classList.remove('away');
-      console.log('dislikepost');
-      this.$store.commit("deleteFromLikedposts", post);
-     }
+    likePost(index, post) {
+      let id = "likebtn" + index;
+      const likebtn = document.getElementById(id);
+      console.log(post);
+      if (likebtn.classList == "there") {
+        console.log("liked a post");
+        this.$store.commit("updateLikedposts", post);
+        likebtn.classList.toggle("away");
+      } else {
+        likebtn.classList.remove("away");
+        console.log("dislikepost");
+        this.$store.dispatch("deleteFromLikedposts", post);
+      }
     },
-    
-    },
-  }
-
+  },
+};
 </script>
 
 <style scoped>
-  .there{
-   color: grey;
-  }
-  .away{
-    color:orange
-  }
+.there {
+  color: grey;
+}
+.away {
+  color: orange;
+}
 #searchbar {
   margin: 2% auto;
   padding: 5px;
@@ -143,7 +147,7 @@ a {
   margin: 5% 0 10% 0;
   text-align: center;
   flex-direction: column;
-z-index: 10;
+  z-index: 10;
   width: 295px;
 }
 
