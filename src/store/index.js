@@ -162,6 +162,7 @@ export default createStore({
       console.log(Land);
       const res = await fetch("https://jesse-foodblog.adaptable.app/blogposts", {
         method: "POST",
+        mode: "cors",
         body: JSON.stringify({
           Post: Land.Post
         }),
