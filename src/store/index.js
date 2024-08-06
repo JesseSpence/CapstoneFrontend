@@ -176,6 +176,7 @@ export default createStore({
     ShowPosts: async (context) => {
       const res = await fetch("https://jesse-foodblog.adaptable.app/blogposts", {
         method: "GET",
+        mode: "cors",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
@@ -187,6 +188,7 @@ export default createStore({
     GetPost: async (context, id) => {
       const res = await fetch("https://jesse-foodblog.adaptable.app/blogposts/" + id, {
         method: "GET",
+        mode: "cors",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
