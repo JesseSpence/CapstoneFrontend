@@ -62,7 +62,7 @@ export default createStore({
   actions: {
     //users
     ShowUsers: async (context) => {
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/users", {
+      const res = await fetch("https://jesse-foodblog.adaptable.app/users", {
         method: "GET",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -74,7 +74,7 @@ export default createStore({
     },
 
     Verify: async (context, token) => {
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/users/users/verify", {
+      const res = await fetch("https://jesse-foodblog.adaptable.app/users/users/verify", {
         method: "GET",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -93,7 +93,7 @@ export default createStore({
     },
 
     Login: async (context, payload,) => {
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/users/login", {
+      const res = await fetch("https://jesse-foodblog.adaptable.app/users/login", {
         method: "POST",
         body: JSON.stringify({
           email: payload.email,
@@ -116,7 +116,7 @@ export default createStore({
     },
 
     Register: async (context, payload) => {
-      await fetch("https://jessesfoodblog.herokuapp.com/users/register", {
+      await fetch("https://jesse-foodblog.adaptable.app/users/register", {
         mode: "cors",
         method: "POST",
         body: JSON.stringify(payload),
@@ -134,7 +134,7 @@ export default createStore({
 
     updateUser: async (context, payload) => {
       console.log(payload)
-      fetch(`https://jessesfoodblog.herokuapp.com/users/` + payload, {
+      fetch(`https://jesse-foodblog.adaptable.app/users/` + payload, {
         mode: "cors",
         method: "PUT",
         body: JSON.stringify(
@@ -160,7 +160,7 @@ export default createStore({
     //posts
     AddPost: async (context, Land) => {
       console.log(Land);
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts", {
+      const res = await fetch("https://jesse-foodblog.adaptable.app/blogposts", {
         method: "POST",
         body: JSON.stringify({
           Post: Land.Post
@@ -173,7 +173,7 @@ export default createStore({
       console.log(added_post);
     },
     ShowPosts: async (context) => {
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts", {
+      const res = await fetch("https://jesse-foodblog.adaptable.app/blogposts", {
         method: "GET",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -184,7 +184,7 @@ export default createStore({
       context.commit("SetPosts", posts);
     },
     GetPost: async (context, id) => {
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/" + id, {
+      const res = await fetch("https://jesse-foodblog.adaptable.app/blogposts/" + id, {
         method: "GET",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -195,7 +195,7 @@ export default createStore({
       context.commit("SetPost", post);
     },
     DeletePost: async (id) => {
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/blogposts/" + id, {
+      const res = await fetch("https://jesse-foodblog.adaptable.app/blogposts/" + id, {
         method: "DELETE",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -209,7 +209,7 @@ export default createStore({
 
     //likedposts
     getLikedposts: async (context) => {
-      fetch(`https://jessesfoodblog.herokuapp.com/blogposts`)
+      fetch(`https://jesse-foodblog.adaptable.app/blogposts`)
         .then((res) => res.json())
         .then((data) => {
           if (data.length === 0) {
@@ -238,7 +238,7 @@ export default createStore({
 
     //comments
     ShowComment: async (context, id) => {
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/comments/blogposts/" + id, {
+      const res = await fetch("https://jesse-foodblog.adaptable.app/comments/blogposts/" + id, {
         method: "GET",
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -250,7 +250,7 @@ export default createStore({
     },
 
     AddComment: async (context, payload) => {
-      const res = await fetch("https://jessesfoodblog.herokuapp.com/comments", {
+      const res = await fetch("https://jesse-foodblog.adaptable.app/comments", {
         mode: "cors",
         method: "POST",
         body: JSON.stringify(payload),
@@ -264,7 +264,7 @@ export default createStore({
 
     DeleteComment: async (context, id) => {
       // console.log(payload);
-      await fetch(`https://jessesfoodblog.herokuapp.com/comments/` + id, {
+      await fetch(`https://jesse-foodblog.adaptable.app/comments/` + id, {
         mode: "cors",
         method: "DELETE",
         headers: {
